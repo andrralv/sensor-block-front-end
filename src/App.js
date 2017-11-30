@@ -22,18 +22,26 @@ class App extends Component {
     // See utils/getWeb3 for more info.
 
     getWeb3
-    .then(results => {
-      this.setState({
-        web3: results.web3
-      })
+      .then(results => {
+        this.setState({
+          web3: results.web3
+        })
 
-      // Instantiate contract once web3 provided.
-      this.instantiateContract()
-    })
-    .catch(() => {
-      console.log('Error finding web3.')
-    })
+        // check if web3 is indeed connected.
+        if (this.state.web3.isConnected()) {
+          console.log("We're in, boss.");
+
+        } else {
+          console.log("Web3 is not connected.");
+        }
+
+        this.instantiateContract()
+      })
+      .catch((error) => {
+        console.log(error)
+      })
   }
+
 
   instantiateContract() {
     /*
@@ -50,13 +58,15 @@ class App extends Component {
     // Declaring this for later so we can chain functions on SimpleStorage.
     var simpleStorageInstance
 
-    // Get accounts.
+
+    this.state.web3.personal.unlockAccount("0x0022467b05bb2f6289a55f37d60ba395495a6670", "1234");
+
     this.state.web3.eth.getAccounts((error, accounts) => {
       simpleStorage.deployed().then((instance) => {
         simpleStorageInstance = instance
 
         // Stores a given value, 5 by default.
-        return simpleStorageInstance.set(9, {from: accounts[0]})
+        return simpleStorageInstance.set(9, { from: accounts[0] })
       }).then((result) => {
         // Get the value from the contract to prove it worked.
         return simpleStorageInstance.get.call(accounts[0])
@@ -65,27 +75,40 @@ class App extends Component {
         return this.setState({ storageValue: result.c[0] })
       })
     })
+
+
   }
+
+  pStyle = {
+    marginLeft: '25%'
+  };
 
   render() {
     return (
       <div className="App">
-        <nav className="navbar pure-menu pure-menu-horizontal">
-            <a href="#" className="pure-menu-heading pure-menu-link">Truffle Box</a>
-        </nav>
+        <div className="react-sidebar react-light-grey react-bar-block bar-width">
+          
+          <h3 className="siderbar-text">Sensor-Block</h3>
+          <div className="spacer"></div>
+          <a href="#" className="react-bar-item react-button">Vehicle Info</a>
+          <a href="#" className="react-bar-item react-button">History</a>
+          <a href="#" className="react-bar-item react-button">Notifications</a>
+          <a href="#" className="react-bar-item react-button">Transfer Vehicle</a>
+          <a href="#" className="react-bar-item react-button">Settings</a>
+        </div>
+    
+        <div className="margin-left">
 
-        <main className="container">
-          <div className="pure-g">
-            <div className="pure-u-1-1">
-              <h1>Good to Go!</h1>
-              <p>Your Truffle Box is installed and ready.</p>
-              <h2>Smart Contract Example</h2>
-              <p>If your contracts compiled and migrated successfully, below will show a stored value of 5 (by default).</p>
-              <p>Try changing the value stored on <strong>line 59</strong> of App.js.</p>
-              <p>The stored value is: {this.state.storageValue}</p>
-            </div>
+          <div className="wrapper-2">
+            <h1>Sensor-Block</h1>
+            <p>Welcome <span className="greyed-out">Toyoko</span>! - Logged in as: <span className= "greyed-out">Manufacturer</span></p>
           </div>
-        </main>
+        
+          <div className="wrapper">
+            <h3>Vehicle Information</h3>
+            
+          </div>
+        </div>
       </div>
     );
   }

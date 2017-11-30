@@ -1,68 +1,44 @@
 /* PAGE */
 
-body,
-.pure-g [class*=pure-u] {
+body, html {
   font-family: 'Open Sans', sans-serif;
+  margin:0 !important;
+  padding:0;
+  background-color: #ffffff;
 }
 
 h1, h2, h3 {
   font-family: 'Oswald', 'Arial Narrow', sans-serif;
+  margin:0 !important;
+  padding:0;
 }
 
-code {
-  display: block;
-  margin: 20px 0 15px 0;
-  padding: 10px;
-  background: #eee;
+.react-bar-item{padding:8px 16px;float:left;width:auto;border:none;outline:none;display:block}
+
+.react-button{white-space:normal}
+.react-sidebar{height:100%; width: 200px;background-color:#222121;;position:fixed!important;z-index:1;overflow:auto}
+.react-light-grey {color:rgb(207, 207, 207)!important;background-color:#0a0a0a!important}
+.react-bar-block {width:20%; min-width:20%;text-align:left;padding:8px 16px}
+.react-bar-block .react-bar-item {width:100%;display:block;padding:6px 16px;text-align:left;border:none;outline:none;white-space:normal;float:none}
+.react-bar-item-2 {padding: 4px 16px !important; margin: 0 !important;}
+.react-container {padding:0.01em 16px;}
+.react-teal {color:rgb(87, 19, 19)!important; background-color:#009688!important;}
+.bar-width {width:20%}
+.margin-left {margin-left:20%}
+
+.react-bar-block .react-bar-item:hover {background-color: rgb(49, 49, 49);}
+
+.wrapper {padding: 15px;}
+.wrapper-2 {padding: 15px; background-color: rgb(181, 197, 204);
+     
 }
 
-.container {
-  box-sizing: border-box;
-  width: 100%;
-  padding: 45px 20px;
-}
+.wrapper-2 p, .wrapper h1 {display: inline;
+  vertical-align: top; }
 
-.pure-button-primary {
-  background-color: #0c1a2b;
-}
+.spacer {padding-bottom: 40px;}
 
-.pure-button-primary:hover {
-  background-color: #233e5e;
-}
+.greyed-out {color: rgb(77, 77, 83);
+  text-decoration: underline;}
 
-.pure-form input[type="text"]:focus {
-  border-color: #0c1a2b;
-}
-
-/* NAVBAR */
-
-.navbar {
-  position: fixed;
-  padding: 5px;
-  background: #0c1a2b;
-  font-family: 'Oswald', 'Arial Narrow', sans-serif;
-}
-
-.navbar a {
-  color: #fff;
-}
-
-.navbar a:active,
-.navbar a:focus,
-.navbar a:hover {
-  background: #233e5e;
-}
-
-.navbar .pure-menu-heading {
-  font-weight: bold;
-  text-transform: none;
-}
-
-.navbar .navbar-right {
-  float: right;
-}
-
-.navbar .uport-logo {
-  height: 16px;
-  margin-right: 10px;
-}
+.siderbar-text {padding: 15px;}
