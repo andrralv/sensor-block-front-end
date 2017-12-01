@@ -5,6 +5,7 @@ body, html {
   margin:0 !important;
   padding:0;
   background-color: #ffffff;
+  overflow-y: hidden;
 }
 
 h1, h2, h3 {
@@ -42,3 +43,47 @@ h1, h2, h3 {
   text-decoration: underline;}
 
 .siderbar-text {padding: 15px;}
+
+/* GRID */
+
+.grid-wrapper {
+  display: grid;
+  grid-column-gap: 10px;
+  grid-row-gap: 10px;
+  grid-template-columns: 40% 30% 30%;
+  grid-template-rows: 25% 25% 25%; 
+
+}
+
+.grid-box {
+  background-color: #444;
+ 
+  
+}
+
+.a {grid-column-start: 1;
+  grid-column-end: 3;
+  background-color: red;}  
+
+.b {grid-column-start: 3;
+  grid-column-end: 3;
+  background-color: blue;}
+
+.c {grid-row-start: 2;
+  grid-column-start: 1;
+  grid-column-end: 2;
+  background-color: yellow;}
+
+.d {grid-row-start: 2;
+  grid-column-start: 2;
+  grid-column-end: 3;
+  background-color: green}
+
+.e {grid-row-start: 2;
+  grid-column-start: 3;
+  grid-column-end: 3;
+  background-color: pink}
+
+  
+ .st0{fill:none;stroke:#000000;stroke-width:2;stroke-linecap:round;stroke-linejoin:round;stroke-miterlimit:10;} 
+ .st1{fill:#CCCCCC;}

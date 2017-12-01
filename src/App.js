@@ -1,6 +1,8 @@
 import React, { Component } from 'react'
 import SimpleStorageContract from '../build/contracts/SimpleStorage.json'
 import getWeb3 from './utils/getWeb3'
+import Sidebar from './Sidebar'
+import Grid from './Grid.js'
 
 import './css/oswald.css'
 import './css/open-sans.css'
@@ -86,28 +88,14 @@ class App extends Component {
   render() {
     return (
       <div className="App">
-        <div className="react-sidebar react-light-grey react-bar-block bar-width">
-          
-          <h3 className="siderbar-text">Sensor-Block</h3>
-          <div className="spacer"></div>
-          <a href="#" className="react-bar-item react-button">Vehicle Info</a>
-          <a href="#" className="react-bar-item react-button">History</a>
-          <a href="#" className="react-bar-item react-button">Notifications</a>
-          <a href="#" className="react-bar-item react-button">Transfer Vehicle</a>
-          <a href="#" className="react-bar-item react-button">Settings</a>
-        </div>
-    
+        <Sidebar />
         <div className="margin-left">
 
           <div className="wrapper-2">
             <h1>Sensor-Block</h1>
-            <p>Welcome <span className="greyed-out">Toyoko</span>! - Logged in as: <span className= "greyed-out">Manufacturer</span></p>
+            <p>Welcome <span className="greyed-out">Toyoko</span>! - Logged in as: <span className="greyed-out">Manufacturer</span></p>
           </div>
-        
-          <div className="wrapper">
-            <h3>Vehicle Information</h3>
-            
-          </div>
+          <Grid />
         </div>
       </div>
     );
