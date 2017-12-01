@@ -1,5 +1,5 @@
 import React from 'react'
-import { Link } from 'react-router-dom'
+import { Link, Route } from 'react-router-dom'
 
 const Sidebar = () => (
         <div className="react-sidebar react-light-grey react-bar-block bar-width"> 
@@ -10,7 +10,13 @@ const Sidebar = () => (
             <Link to="/notifications" className="react-bar-item react-button">Notifications</Link>
             <Link to="/transfer" className="react-bar-item react-button">Transfer Vehicle</Link>
             <Link to="/settings" className="react-bar-item react-button">Settings</Link>
+            
         </div>
     )
 export default Sidebar;
 
+/*
+<Route exact path="/" component={Home}/>
+<Route path="/about" component={About}/>
+<Route path="/topics" component={Topics}/>
+*/
