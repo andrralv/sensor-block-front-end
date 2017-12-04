@@ -1,10 +1,14 @@
 import React from 'react'
 import ReactSVG from 'react-svg'
+import sensorColors from './../utils/sensorColors.js'
 
 const Car = () => (
     <ReactSVG
     path="./car.svg"
-    callback={svg => console.log(svg)}
+    callback={function(svg) {
+        sensorColors(svg);
+        }
+    }
     className="car-svg"
     wrapperClassName="car-svg-wrapper"
     evalScript="always"
