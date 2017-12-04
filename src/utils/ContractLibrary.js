@@ -5,9 +5,9 @@ import VehiculeABI from '../../build/contracts/Vehicule'
 const ContractLibrary = {
     web3: null,
     contracts: [],
-    getInstance: function () {
+    getInstance: async function () {
         if (!this.web3) {
-            getWeb3.then(results => {
+            await getWeb3.then(results => {
                 this.web3 = results.web3;
                 this.initContracts();
             }).catch((error) => {
