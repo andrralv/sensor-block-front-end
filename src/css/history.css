@@ -1,3 +1,17 @@
+ul.table {
+    display: table;
+}
+ul.table > li {
+    display: table-cell;
+}
+.centered ul.table > li {
+    padding-left: 1em;
+    padding-right: 1em;    
+}
+ul.table.even {
+    width: 100%;
+    table-layout: fixed;
+}
 div.item {
     display: flex;
     flex: auto;
@@ -67,7 +81,6 @@ div.item {
     list-style-type: none;
     padding: 0 0 0 75px;
     margin: -1.35rem 0 1em;
-    max-width: 32rem;
     font-size: 1em;
   }
   @media (min-width: 62em) {

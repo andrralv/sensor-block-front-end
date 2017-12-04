@@ -22,16 +22,16 @@ const ContractLibrary = {
     getBlockNumber: function () {
         return this.web3.eth.blockNumber;
     },
-    getVehiculeHistory: async function (address) {
-        var history = [];
+    getVehiculeHistory: async function (address, component) {
         await this.contracts.Vehicule.at(address).then(vehicule => {
             vehicule.OnActionEvent({}, { fromBlock: 0, toBlock: 'latest' }).get((error, result) => {
+                let list = [];
                 result.forEach(row => {
                     var data;
                     if (row.args._data) {
                         data = JSON.parse(row.args._data);
                     }
-                    history.push({
+                    list.push({
                         event: row.args._event.c[0],
                         rerefence: row.args._ref,
                         description: row.args._description,
@@ -40,10 +40,11 @@ const ContractLibrary = {
                         blockNumber: row.args._blockNumber.c[0]
                     });
                 });
+                component.setState({
+                    history: list
+                });
             });
         });
-        console.log(history);
-        return history;
     }
 }
 

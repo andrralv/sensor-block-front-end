@@ -7,19 +7,37 @@ export class History extends Component {
     constructor(props) {
         super(props);
         this.state = {
-            bn: 0
+            bn: 0,
+            history: []
         };
     }
 
     componentWillMount() {
         ContractLibrary.getInstance();
+        ContractLibrary.getVehiculeHistory("0x3e4161669Dd2abF0bA33bA63978C44f21ed61Ed7", this);
         this.setState({
-            bn: ContractLibrary.getBlockNumber(),
-            history: ContractLibrary.getVehiculeHistory("0x3e4161669Dd2abF0bA33bA63978C44f21ed61Ed7")
+            bn: ContractLibrary.getBlockNumber()
         });
     }
 
     render() {
+        const monthNames = ["January", "February", "March", "April", "May", "June",
+            "July", "August", "September", "October", "November", "December"];
+        const eventTypes = ["Creation", "Transfer", "ReceivedAtDealer", "ReceivedAtServiceShop",
+            "Maintenance", "AutoSensor", "ManualSensor", "Sell", "Buy"];
+        const listItems = this.state.history.map((row, index) =>
+            <section key={index} className="year">
+                <h3>{row.timestamp.getFullYear()}</h3>
+                <section>
+                    <h4>{monthNames[row.timestamp.getMonth()]}</h4>
+                    <ul className="table even">
+                        <li>{row.blockNumber}</li>
+                        <li>{eventTypes[row.event]}</li>
+                        <li>{row.description}</li>
+                    </ul>
+                </section>
+            </section>
+        );
         return (
             <div className="App">
                 <div className="margin-left">
@@ -30,48 +48,7 @@ export class History extends Component {
                     <div className="item">
                         <div id="timeline">
                             <div>
-                                {
-                                    this.state.history.forEach(row => (
-                                        <section className="year">
-                                            <h3>row.timeline.getFullYear()</h3>
-                                            <section>
-                                                <ul>
-                                                    <li>row.description</li>
-                                                </ul>
-                                            </section>
-                                        </section>
-                                    ))
-                                }
-                                <section className="year">
-                                    <h3>2007</h3>
-                                    <section>
-                                        <ul>
-                                            <li>Satoshi Nakamoto began working on the Bitcoin concept.</li>
-                                        </ul>
-                                    </section>
-                                </section>
-                                <section className="year">
-                                    <h3>2008</h3>
-                                    <section>
-                                        <h4>August</h4>
-                                        <ul>
-                                            <li>Neal Kin, Vladimir Oksman, and Charles Bry file an application for an encryption patent application.</li>
-                                            <li>Bitcoin.org was registered at <a href="https://anonymousspeech.com/">anonymousspeech.com</a>.</li>
-                                        </ul>
-                                    </section>
-                                    <section>
-                                        <h4>October</h4>
-                                        <ul>
-                                            <li>Nakamoto describes the Bitcoin currency and solves the problem of double spending.</li>
-                                        </ul>
-                                    </section>
-                                    <section>
-                                        <h4>November</h4>
-                                        <ul>
-                                            <li>The Bitcoin project is registered on <a href="https://sourceforge.net/">SourceForge.net</a>.</li>
-                                        </ul>
-                                    </section>
-                                </section>
+                                {listItems}
                             </div>
                         </div>
                     </div>
