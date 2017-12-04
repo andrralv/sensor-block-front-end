@@ -84,6 +84,7 @@ class App extends Component {
   render() {
     return (
       <div>
+        <Sidebar />
         <Main />
       </div>
     );

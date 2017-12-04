@@ -1,5 +1,5 @@
 import React from 'react'
-import { Link, Route } from 'react-router-dom'
+import { Link } from 'react-router-dom'
 
 const Sidebar = () => (
         <div className="react-sidebar react-light-grey react-bar-block bar-width"> 

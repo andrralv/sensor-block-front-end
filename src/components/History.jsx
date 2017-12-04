@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
-import Contracts from './utils/ContractLibrary'
+import Contracts from '../utils/ContractLibrary'
 import TruffleContract from 'truffle-contract'
-import getWeb3 from './utils/getWeb3'
+import getWeb3 from '../utils/getWeb3'
 
 export class History extends Component {
 
@@ -25,13 +25,20 @@ export class History extends Component {
 
     initContracts() {
         this.setState({
-            Vehicule : Contracts(this.web3)
+            Vehicule: Contracts(this.web3)
         });
     }
 
     render() {
         return (
-            <div>{this.state.Vehicule.getVehiculeHistory(1)}</div>
+            <div className="App">
+                <div className="margin-left">
+                    <div className="wrapper-2">
+                        <h1>History</h1>
+                        
+                    </div>
+                </div>
+            </div>
         );
     }
 }
