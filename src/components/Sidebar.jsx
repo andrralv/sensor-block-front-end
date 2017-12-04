@@ -14,10 +14,3 @@ const Sidebar = () => (
         </div>
     )
 export default Sidebar;
-
-<Route path="/history" component={History}/>
-/*
-<Route exact path="/" component={Home}/>
-<Route path="/about" component={About}/>
-<Route path="/topics" component={Topics}/>
-*/

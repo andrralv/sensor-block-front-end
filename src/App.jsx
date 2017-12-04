@@ -1,8 +1,9 @@
 import React, { Component } from 'react'
-import SimpleStorageContract from '../build/contracts/SimpleStorage.json'
+//import SimpleStorageContract from '../build/contracts/SimpleStorage.json'
 import getWeb3 from './utils/getWeb3'
 import Sidebar from './Sidebar'
 import Grid from './Grid'
+import Main from './components/Main'
 
 import './css/oswald.css'
 import './css/open-sans.css'
@@ -47,36 +48,31 @@ class App extends Component {
 
   instantiateContract() {
     /*
-     * SMART CONTRACT EXAMPLE
-     *
-     * Normally these functions would be called in the context of a
-     * state management library, but for convenience I've placed them here.
-     */
-
-    const contract = require('truffle-contract')
-    const simpleStorage = contract(SimpleStorageContract)
-    simpleStorage.setProvider(this.state.web3.currentProvider)
-
-    // Declaring this for later so we can chain functions on SimpleStorage.
-    var simpleStorageInstance
-
-
-    this.state.web3.personal.unlockAccount("0x0022467b05bb2f6289a55f37d60ba395495a6670", "1234");
-
-    this.state.web3.eth.getAccounts((error, accounts) => {
-      simpleStorage.deployed().then((instance) => {
-        simpleStorageInstance = instance
-
-        // Stores a given value, 5 by default.
-        return simpleStorageInstance.set(9, { from: accounts[0] })
-      }).then((result) => {
-        // Get the value from the contract to prove it worked.
-        return simpleStorageInstance.get.call(accounts[0])
-      }).then((result) => {
-        // Update state with the result.
-        return this.setState({ storageValue: result.c[0] })
-      })
-    })
+       const TruffleContract = require('truffle-contract')
+   
+       
+       const simpleStorage = contract(SimpleStorageContract)
+       simpleStorage.setProvider(this.state.web3.currentProvider)
+   
+       // Declaring this for later so we can chain functions on SimpleStorage.
+       var simpleStorageInstance
+   
+       this.state.web3.personal.unlockAccount("0x0022467b05bb2f6289a55f37d60ba395495a6670", "1234");
+   
+       this.state.web3.eth.getAccounts((error, accounts) => {
+         simpleStorage.deployed().then((instance) => {
+           simpleStorageInstance = instance
+   
+           // Stores a given value, 5 by default.
+           return simpleStorageInstance.set(9, { from: accounts[0] })
+         }).then((result) => {
+           // Get the value from the contract to prove it worked.
+           return simpleStorageInstance.get.call(accounts[0])
+         }).then((result) => {
+           // Update state with the result.
+           return this.setState({ storageValue: result.c[0] })
+         })
+       })*/
 
 
   }
@@ -87,16 +83,8 @@ class App extends Component {
 
   render() {
     return (
-      <div className="App">
-        <Sidebar />
-        <div className="margin-left">
-
-          <div className="wrapper-2">
-            <h1>Sensor-Block</h1>
-            <p>Welcome <span className="greyed-out">Toyoko</span>! - Logged in as: <span className="greyed-out">Manufacturer</span></p>
-          </div>
-          <Grid />
-        </div>
+      <div>
+        <Main />
       </div>
     );
   }
