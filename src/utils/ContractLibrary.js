@@ -21,6 +21,29 @@ const ContractLibrary = {
     },
     getBlockNumber: function () {
         return this.web3.eth.blockNumber;
+    },
+    getVehiculeHistory: async function (address) {
+        var history = [];
+        await this.contracts.Vehicule.at(address).then(vehicule => {
+            vehicule.OnActionEvent({}, { fromBlock: 0, toBlock: 'latest' }).get((error, result) => {
+                result.forEach(row => {
+                    var data;
+                    if (row.args._data) {
+                        data = JSON.parse(row.args._data);
+                    }
+                    history.push({
+                        event: row.args._event.c[0],
+                        rerefence: row.args._ref,
+                        description: row.args._description,
+                        data: data,
+                        timestamp: new Date(row.args._timestamp.c[0] * 1000),
+                        blockNumber: row.args._blockNumber.c[0]
+                    });
+                });
+            });
+        });
+        console.log(history);
+        return history;
     }
 }
 
