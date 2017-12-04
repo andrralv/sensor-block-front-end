@@ -1,31 +1,19 @@
 import React, { Component } from 'react';
-import Contracts from '../utils/ContractLibrary'
-import TruffleContract from 'truffle-contract'
-import getWeb3 from '../utils/getWeb3'
+import ContractLibrary from '../utils/ContractLibrary'
 
 export class History extends Component {
 
     constructor(props) {
         super(props);
         this.state = {
-            web3: null
-        }
+            bn: 0
+        };
     }
 
     componentWillMount() {
-        getWeb3.then(results => {
-            this.setState({
-                web3: results.web3
-            });
-            this.initContracts();
-        }).catch((error) => {
-            console.log(error)
-        });
-    }
-
-    initContracts() {
+        ContractLibrary.getInstance();
         this.setState({
-            Vehicule: Contracts(this.web3)
+            bn : ContractLibrary.getBlockNumber()
         });
     }
 
@@ -35,7 +23,7 @@ export class History extends Component {
                 <div className="margin-left">
                     <div className="wrapper-2">
                         <h1>History</h1>
-                        
+                        <h2>{this.state.bn}</h2>
                     </div>
                 </div>
             </div>
