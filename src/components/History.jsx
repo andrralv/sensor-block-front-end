@@ -2,7 +2,6 @@ import React, { Component } from 'react';
 import ContractLibrary from '../utils/ContractLibrary'
 
 export class History extends Component {
-
     constructor(props) {
         super(props);
         this.state = {
