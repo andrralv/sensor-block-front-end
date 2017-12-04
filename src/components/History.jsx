@@ -12,7 +12,8 @@ export class History extends Component {
     componentWillMount() {
         ContractLibrary.getInstance();
         this.setState({
-            bn : ContractLibrary.getBlockNumber()
+            bn : ContractLibrary.getBlockNumber(),
+            status : ContractLibrary.getVehiculeStatus("0x3e4161669Dd2abF0bA33bA63978C44f21ed61Ed7")
         });
     }
 
@@ -22,7 +23,7 @@ export class History extends Component {
                 <div className="margin-left">
                     <div className="wrapper-2">
                         <h1>History</h1>
-                        <h2>{this.state.bn}</h2>
+                        <h2>{this.state.status.brand}</h2>
                     </div>
                 </div>
             </div>

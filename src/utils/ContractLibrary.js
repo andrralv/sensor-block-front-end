@@ -21,6 +21,24 @@ const ContractLibrary = {
     },
     getBlockNumber: function () {
         return this.web3.eth.blockNumber;
+    },
+    getVehiculeStatus: async function(address) {
+        let history = [];
+        await this.contracts.Vehicule.at(address).then(vehicule => {
+            return vehicule.getState();
+            }).then(state => {
+            history = {
+                brand : state[0],
+                model : state[1],
+                type : state[2],
+                engine : state[3],
+                extras : state[4],
+                year : state[6],
+                vin : this.web3.toUtf8(state[5]),
+                lastUpdate : state[7],
+            };
+        })
+        return history;
     }
 }
 

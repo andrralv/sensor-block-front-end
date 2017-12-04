@@ -1,10 +1,11 @@
 import React from 'react'
+import Car from './Car'
 import SensorTable from './SensorTable'
 
 const Grid= () => (
     <div className="grid-wrapper">
             <div className="grid-box a">
-            <svg src="./public/car.svg"></svg>
+            <Car />
             </div>
             <div className="grid-box b">
             <SensorTable.SensorTableTop />
