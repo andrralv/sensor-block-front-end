@@ -3,7 +3,6 @@ import ContractLibrary from '../utils/ContractLibrary'
 import '../css/history.css'
 
 export class History extends Component {
-
     constructor(props) {
         super(props);
         this.state = {
@@ -16,7 +15,8 @@ export class History extends Component {
         ContractLibrary.getInstance();
         ContractLibrary.getVehiculeHistory("0x3e4161669Dd2abF0bA33bA63978C44f21ed61Ed7", this);
         this.setState({
-            bn: ContractLibrary.getBlockNumber()
+            bn : ContractLibrary.getBlockNumber(),
+            status : ContractLibrary.getVehiculeStatus("0x3e4161669Dd2abF0bA33bA63978C44f21ed61Ed7")
         });
     }
 
@@ -43,7 +43,7 @@ export class History extends Component {
                 <div className="margin-left">
                     <div className="wrapper-2">
                         <h1>History</h1>
-                        <h2>{this.state.bn}</h2>
+                        <h2>{this.state.status.brand}</h2>
                     </div>
                     <div className="item">
                         <div id="timeline">
