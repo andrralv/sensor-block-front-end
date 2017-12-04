@@ -12,9 +12,9 @@ export class History extends Component {
 
     componentWillMount() {
         ContractLibrary.getInstance();
-        this.setState({
+        /*this.setState({
             bn : ContractLibrary.getBlockNumber()
-        });
+        });*/
     }
 
     render() {

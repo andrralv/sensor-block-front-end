@@ -1,5 +1,5 @@
 import React, { Component } from 'react'
-import Sidebar from './Sidebar'
+import Sidebar from './components/Sidebar'
 import Main from './components/Main'
 
 import './css/oswald.css'
