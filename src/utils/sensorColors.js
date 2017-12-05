@@ -1,30 +1,54 @@
 function sensorColors(svg) {
 
     // colors for the crash sensors
-    let crash_a = svg.children[2].children[0];
-    let crash_b = svg.children[2].children[1];
-    let crash_c = svg.children[2].children[2];
-    let crash_d = svg.children[2].children[3];
-    let crash_e = svg.children[2].children[4];
-    let crash_f = svg.children[2].children[5];
+    let crashes = [];
 
-    crash_a.style.fill = "blue";
+    let crash_a = document.getElementsByTagName("circle")[0];
+    crashes.push(crash_a);
+    let crash_b = document.getElementsByTagName("circle")[1];
+    crashes.push(crash_b);
+    let crash_c = document.getElementsByTagName("circle")[2];
+    crashes.push(crash_c);
+    let crash_d = document.getElementsByTagName("circle")[3];
+    crashes.push(crash_d);
+    let crash_e = document.getElementsByTagName("circle")[4];
+    crashes.push(crash_e);
+    let crash_f = document.getElementsByTagName("circle")[5];
+    crashes.push(crash_f);
+    let crash_g = document.getElementsByTagName("circle")[6];
+    crashes.push(crash_g);
 
+    crashes.forEach(function(crash) {
+        crash.style.fill = "yellow";
+    })
+    let statuses = [];
     // colors for the status sensors
-    let status_a = svg.children[3].children[0];
-    let status_b = svg.children[3].children[1];
-    let status_c = svg.children[3].children[2];
-    let status_d = svg.children[3].children[3];
-    let status_e = svg.children[3].children[4];
-    let status_f = svg.children[3].children[5];
-    let status_g = svg.children[3].children[6];
-    let status_h = svg.children[3].children[7];
-    let status_i = svg.children[3].children[8];
-    let status_j = svg.children[3].children[9];
-    let status_k = svg.children[3].children[10];
+    let status_1 = document.getElementsByTagName("rect")[0];
+    statuses.push(status_1);
+    let status_2 = document.getElementsByTagName("rect")[1];
+    statuses.push(status_2);
+    let status_3 = document.getElementsByTagName("rect")[2];
+    statuses.push(status_3);
+    let status_4 = document.getElementsByTagName("rect")[3];
+    statuses.push(status_4);
+    let status_5 = document.getElementsByTagName("rect")[4];
+    statuses.push(status_5);
+    let status_6 = document.getElementsByTagName("rect")[5];
+    statuses.push(status_6);
+    let status_7 = document.getElementsByTagName("rect")[6];
+    statuses.push(status_7);
+    let status_8 = document.getElementsByTagName("rect")[7];
+    statuses.push(status_8);
+    let status_9 = document.getElementsByTagName("rect")[8];
+    statuses.push(status_9);
+    let status_10 = document.getElementsByTagName("rect")[9];
+    statuses.push(status_10);
+    let status_11 = document.getElementsByTagName("rect")[10];
+    statuses.push(status_11);
 
-
-    status_k.style.fill = "blue";
+    statuses.forEach(function(status) {
+        status.style.fill = "red";
+    })
 
     console.log("Sensor Colors has loaded properly.");
 }

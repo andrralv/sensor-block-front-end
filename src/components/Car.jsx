@@ -4,7 +4,7 @@ import sensorColors from './../utils/sensorColors.js'
 
 const Car = () => (
     <ReactSVG
-    path="./car.svg"
+    path="./car-v2.svg"
     callback={function(svg) {
         sensorColors(svg);
         }
