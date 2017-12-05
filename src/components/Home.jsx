@@ -6,7 +6,7 @@ export class Home extends Component {
   constructor(props) {
       super(props);
       this.state = {
-          status: {}
+          status: []
       };
   }
 
@@ -16,7 +16,7 @@ export class Home extends Component {
   }
 
 render() {
-  console.log(status)
+  console.log(this.state.status.engine)
   return (
   <div className="App">
     <div className="margin-left">
