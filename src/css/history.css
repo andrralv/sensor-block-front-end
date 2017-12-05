@@ -4,15 +4,14 @@ div.container {
   flex-direction: column;
   max-height: 100%;
 }
-div.header {
+div.glow {
   height: auto;
   text-align: center;
   background: slategrey;
   color: ghostwhite;
-  padding: 2.3rem 1rem 2.3rem 1rem;
   position: relative;
 }
-div.header:after {
+div.glow:after {
   content: '';
   position: absolute;
   bottom: -5rem;
@@ -55,7 +54,6 @@ div.item {
     position: relative;
     display: table;
     height: 100%;
-    margin-left: auto;
     margin-right: auto;
     margin-top: 5rem;
   }
@@ -97,7 +95,6 @@ div.item {
   }
   #timeline section.year section h4 {
     position: absolute;
-    bottom: 0;
     font-size: .9em;
     font-weight: 400;
     line-height: 1.2em;
@@ -155,5 +152,59 @@ div.item {
     color: mediumturquoise;
     font-weight: 500;
   }
-
   
+  .block {
+		grid-area: block;
+	}
+
+	.desc {
+		grid-area: desc;
+	}
+
+	.type {
+		grid-area: type;
+	}
+
+	.ref {
+    grid-area: ref;
+    font-size: smaller;
+  }
+  
+  .day {
+    grid-area: day;
+    font-size: smaller;
+  }
+
+  .history-grid {
+    border-left: 2px solid #ccc !important;
+    font-size: medium;
+    display: grid;
+    grid-gap: 1em;
+    padding-left: 5px;
+    grid-template-areas:
+     "ref"
+     "block"
+     "type"
+     "desc"
+     "day"
+  }
+
+	@media only screen and (min-width: 500px)  {
+	.history-grid {
+		grid-template-columns: 20% 40% auto;
+		grid-template-areas:
+    "ref  ref  day"
+		"block type desc";
+	}
+	}
+
+	@media only screen and (min-width: 600px)   {
+		.history-grid {
+      grid-gap: 5px;
+			grid-template-columns: 20% 50% 60%;
+			grid-template-areas:
+      "ref  ref  day"
+			"block type desc";
+		}
+	}
+
