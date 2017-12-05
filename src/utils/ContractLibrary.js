@@ -39,8 +39,7 @@ const ContractLibrary = {
             };
         })
     },
-    getVehiculeHistory: async function (address) {
-        var history = [];
+    getVehiculeHistory: async function (address, component) {
         await this.contracts.Vehicule.at(address).then(vehicule => {
             vehicule.OnActionEvent({}, { fromBlock: 0, toBlock: 'latest' }).get((error, result) => {
                 let list = [];
