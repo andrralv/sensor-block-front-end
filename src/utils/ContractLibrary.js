@@ -20,43 +20,57 @@ const ContractLibrary = {
         this.contracts.Vehicule.setProvider(this.web3.currentProvider);
     },
     getBlockNumber: function () {
+        if (!this.web3) {
+            return;
+        }
         return this.web3.eth.blockNumber;
     },
-    getVehiculeStatus: async function(address) {
+    getVehiculeStatus: async function (address) {
         let history = [];
         await this.contracts.Vehicule.at(address).then(vehicule => {
             return vehicule.getState();
-            }).then(state => {
+        }).then(state => {
             history = {
-                brand : state[0],
-                model : state[1],
-                type : state[2],
-                engine : state[3],
-                extras : state[4],
-                year : state[6],
-                vin : this.web3.toUtf8(state[5]),
-                lastUpdate : state[7],
+                brand: state[0],
+                model: state[1],
+                type: state[2],
+                engine: state[3],
+                extras: state[4],
+                year: state[6],
+                vin: this.web3.toUtf8(state[5]),
+                lastUpdate: state[7],
             };
         })
     },
     getVehiculeHistory: async function (address, component) {
+        if (!this.web3) {
+            return;
+        }
         await this.contracts.Vehicule.at(address).then(vehicule => {
             vehicule.OnActionEvent({}, { fromBlock: 0, toBlock: 'latest' }).get((error, result) => {
-                let list = [];
+                let list = {};
                 result.forEach(row => {
                     var data;
                     if (row.args._data) {
                         data = JSON.parse(row.args._data);
                     }
-                    list.push({
+                    var date = new Date(row.args._timestamp.c[0] * 1000);
+                    if (!list[date.getFullYear()]) {
+                        list[date.getFullYear()] = {};
+                    }
+                    if (!list[date.getFullYear()][date.getMonth()]) {
+                        list[date.getFullYear()][date.getMonth()] = [];
+                    }
+                    list[date.getFullYear()][date.getMonth()].push({
                         event: row.args._event.c[0],
                         rerefence: row.args._ref,
                         description: row.args._description,
                         data: data,
-                        timestamp: new Date(row.args._timestamp.c[0] * 1000),
+                        timestamp: date,
                         blockNumber: row.args._blockNumber.c[0]
                     });
                 });
+                console.log(list);
                 component.setState({
                     history: list
                 });

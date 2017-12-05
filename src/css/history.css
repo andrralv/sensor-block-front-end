@@ -4,6 +4,32 @@ div.container {
   flex-direction: column;
   max-height: 100%;
 }
+div.header {
+  height: auto;
+  text-align: center;
+  background: slategrey;
+  color: ghostwhite;
+  padding: 2.3rem 1rem 2.3rem 1rem;
+  position: relative;
+}
+div.header:after {
+  content: '';
+  position: absolute;
+  bottom: -5rem;
+  left: 0rem;
+  height: 5.1rem;
+  display: block;
+  width: 100%;
+  z-index: 300;
+  background: -moz-linear-gradient(top, white 20%, rgba(255, 255, 255, 0) 100%);
+  /* FF3.6-15 */
+  background: -webkit-linear-gradient(top, white 20%, rgba(255, 255, 255, 0) 100%);
+  /* Chrome10-25,Safari5.1-6 */
+  background: linear-gradient(to bottom, white 20%, rgba(255, 255, 255, 0) 100%);
+  /* W3C, IE10+, FF16+, Chrome26+, Opera12+, Safari7+ */
+  filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#ffffff', endColorstr='#00ffffff',GradientType=0 );
+  /* IE6-9 */
+}
 ul.table {
     display: table;
 }
@@ -21,8 +47,9 @@ ul.table.even {
 div.item {
     display: flex;
     flex: auto;
-    overflow-y: auto;
+    overflow-y: scroll;
     padding: 0rem 1rem 0rem 1rem;
+    height: 500px;
   }
 #timeline {
     position: relative;
@@ -128,3 +155,5 @@ div.item {
     color: mediumturquoise;
     font-weight: 500;
   }
+
+  

@@ -14,10 +14,6 @@ export class History extends Component {
     componentWillMount() {
         ContractLibrary.getInstance();
         ContractLibrary.getVehiculeHistory("0x3e4161669Dd2abF0bA33bA63978C44f21ed61Ed7", this);
-        this.setState({
-            bn: ContractLibrary.getBlockNumber(),
-            status: ContractLibrary.getVehiculeStatus("0x3e4161669Dd2abF0bA33bA63978C44f21ed61Ed7")
-        });
     }
 
     render() {
@@ -25,17 +21,23 @@ export class History extends Component {
             "July", "August", "September", "October", "November", "December"];
         const eventTypes = ["Creation", "Transfer", "ReceivedAtDealer", "ReceivedAtServiceShop",
             "Maintenance", "AutoSensor", "ManualSensor", "Sell", "Buy"];
-        const listItems = this.state.history.map((row, index) =>
+        const listItems = Object.keys(this.state.history).map((year, index) =>
             <section key={index} className="year">
-                <h3>{row.timestamp.getFullYear()}</h3>
-                <section>
-                    <h4>{monthNames[row.timestamp.getMonth()]}</h4>
-                    <ul className="table even">
-                        <li>{row.blockNumber}</li>
-                        <li>{eventTypes[row.event]}</li>
-                        <li>{row.description}</li>
-                    </ul>
-                </section>
+                <h3>{year}</h3>
+                {
+                    Object.keys(this.state.history[year]).map((month, index) => (
+                        <section key={index}>
+                            <h4>{monthNames[month]}</h4>
+                            <ul>
+                                {
+                                    this.state.history[year][month].map((row, index) => (
+                                        <li>{row.rerefence} {row.blockNumber} {eventTypes[row.event]} {row.description}</li>
+                                    ))
+                                }
+                            </ul>
+                        </section>
+                    ))
+                }
             </section>
         );
         return (
