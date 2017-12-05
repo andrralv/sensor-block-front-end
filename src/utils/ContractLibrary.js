@@ -1,6 +1,7 @@
 import TruffleContract from 'truffle-contract'
 import getWeb3 from '../utils/getWeb3'
 import VehiculeABI from '../../build/contracts/Vehicule'
+import ActorABI from '../../build/contracts/Actor'
 
 const ContractLibrary = {
     web3: null,
@@ -17,7 +18,9 @@ const ContractLibrary = {
     },
     initContracts: function () {
         this.contracts.Vehicule = TruffleContract(VehiculeABI);
+        this.contracts.Actor = TruffleContract(ActorABI);
         this.contracts.Vehicule.setProvider(this.web3.currentProvider);
+        this.contracts.Actor.setProvider(this.web3.currentProvider);
     },
     getBlockNumber: async function () {
         if (!this.web3) {
@@ -80,6 +83,20 @@ const ContractLibrary = {
                 });
             });
         });
+    },
+    getActorData: async function(address, component) {
+        if (!this.web3) {
+            await this.getInstance();
+        }
+        await this.contracts.Actor.at(address).then(actor => {
+            console.log("!!ss", actor)
+            return actor.owner();
+        }).then(name => {
+            console.log("!!", name)
+            component.setState({
+                actor: name
+            })
+        })
     }
 }
 
