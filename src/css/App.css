@@ -131,7 +131,6 @@ h1, h2, h3 {
   grid-column-start: 1;
   grid-column-end: 3;
   background-color: white;
-  border-bottom:
 }
 
 .b {
@@ -175,6 +174,6 @@ h1, h2, h3 {
 }
 
 .profile {
-  position: relative;
+  position: absolute;
   bottom: 20px;
 }
