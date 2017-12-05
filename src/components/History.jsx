@@ -20,7 +20,15 @@ export class History extends Component {
         const monthNames = ["January", "February", "March", "April", "May", "June",
             "July", "August", "September", "October", "November", "December"];
         const eventTypes = ["Creation", "Transfer", "ReceivedAtDealer", "ReceivedAtServiceShop",
-            "Maintenance", "AutoSensor", "ManualSensor", "Sell", "Buy"];
+            "Maintenance", "Automatic Sensor Data Upload", "ManualSensor", "Sell", "Buy"];
+        const dateFormatOptions = {
+            weekday: 'long',
+            year: 'numeric',
+            month: 'short',
+            day: 'numeric',
+            hour: '2-digit',
+            minute: '2-digit'
+        };
         const listItems = Object.keys(this.state.history).map((year, index) =>
             <section key={index} className="year">
                 <h3>{year}</h3>
@@ -31,7 +39,15 @@ export class History extends Component {
                             <ul>
                                 {
                                     this.state.history[year][month].map((row, index) => (
-                                        <li>{row.rerefence} {row.blockNumber} {eventTypes[row.event]} {row.description}</li>
+                                        <li key={index}>
+                                            <div className="history-grid">
+                                                <div className="ref">{row.rerefence}</div>
+                                                <div className="block">{row.blockNumber}</div>
+                                                <div className="type">{eventTypes[row.event]}</div>
+                                                <div className="desc">{row.description}</div>
+                                                <div className="day">{row.timestamp.toLocaleString('en-us', dateFormatOptions)}</div>
+                                            </div>
+                                        </li>
                                     ))
                                 }
                             </ul>
@@ -48,6 +64,7 @@ export class History extends Component {
                             <h1>History</h1>
                             <h2></h2>
                         </div>
+                        <div className="glow"></div>
                         <div className="item">
                             <div id="timeline">
                                 <div>
