@@ -75,7 +75,6 @@ const ContractLibrary = {
                         blockNumber: row.args._blockNumber.c[0]
                     });
                 });
-                console.log(list);
                 component.setState({
                     history: list
                 });

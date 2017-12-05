@@ -46,7 +46,7 @@ export class History extends Component {
                     <div className="container">
                         <div className="wrapper-2">
                             <h1>History</h1>
-                            <h2>{this.state.status.brand}</h2>
+                            <h2></h2>
                         </div>
                         <div className="item">
                             <div id="timeline">
