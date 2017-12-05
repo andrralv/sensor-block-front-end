@@ -63,7 +63,7 @@ h1, h2, h3 {
 
 .a {grid-column-start: 1;
   grid-column-end: 3;
-  background-color: red;}  
+  background-color: white;}  
 
 .b {grid-column-start: 3;
   grid-column-end: 3;
@@ -87,4 +87,6 @@ h1, h2, h3 {
   
  .st0{fill:none;stroke:#000000;stroke-width:2;stroke-linecap:round;stroke-linejoin:round;stroke-miterlimit:10;} 
  .st1{fill:#CCCCCC;}
+
+ .car-svg {overflow: hidden;}
 

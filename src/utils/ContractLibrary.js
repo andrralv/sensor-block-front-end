@@ -22,12 +22,12 @@ const ContractLibrary = {
     getBlockNumber: function () {
         return this.web3.eth.blockNumber;
     },
-    getVehiculeStatus: async function(address) {
-        let history = [];
+    getVehiculeStatus: async function(address, component) {
+        
         await this.contracts.Vehicule.at(address).then(vehicule => {
             return vehicule.getState();
             }).then(state => {
-            history = {
+            let statusList = {
                 brand : state[0],
                 model : state[1],
                 type : state[2],
@@ -37,10 +37,12 @@ const ContractLibrary = {
                 vin : this.web3.toUtf8(state[5]),
                 lastUpdate : state[7],
             };
+            component.setState({
+                status: statusList
+            })
         })
     },
-    getVehiculeHistory: async function (address) {
-        var history = [];
+    getVehiculeHistory: async function (address, component) {
         await this.contracts.Vehicule.at(address).then(vehicule => {
             vehicule.OnActionEvent({}, { fromBlock: 0, toBlock: 'latest' }).get((error, result) => {
                 let list = [];
