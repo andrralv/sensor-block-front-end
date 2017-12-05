@@ -2,47 +2,117 @@
 
 body, html {
   font-family: 'Open Sans', sans-serif;
-  margin:0 !important;
-  padding:0;
+  margin: 0 !important;
+  padding: 0;
   background-color: #ffffff;
   overflow-y: hidden;
 }
 
 h1, h2, h3 {
   font-family: 'Oswald', 'Arial Narrow', sans-serif;
-  margin:0 !important;
-  padding:0;
+  margin: 0 !important;
+  padding: 0;
 }
 
-.react-bar-item{padding:8px 16px;float:left;width:auto;border:none;outline:none;display:block}
-
-.react-button{white-space:normal}
-.react-sidebar{height:100%; width: 200px;background-color:#222121;;position:fixed!important;z-index:1;overflow:auto}
-.react-light-grey {color:rgb(207, 207, 207)!important;background-color:#0a0a0a!important}
-.react-bar-block {width:18%; min-width:18%;text-align:left;padding:8px 16px}
-.react-bar-block .react-bar-item {width:100%;display:block;padding:6px 16px;text-align:left;border:none;outline:none;white-space:normal;float:none; text-decoration:none;}
-.react-bar-item-2 {padding: 4px 16px !important; margin: 0 !important;}
-.react-container {padding:0.01em 16px;}
-.react-teal {color:rgb(87, 19, 19)!important; background-color:#009688!important;}
-.bar-width {width:18%}
-.margin-left {margin-left:18%}
-
-.react-bar-block .react-bar-item:hover {background-color: rgb(49, 49, 49);}
-
-.wrapper {padding: 15px;}
-.wrapper-2 {padding: 15px; background-color: rgb(181, 197, 204);
-     
+.react-bar-item {
+  padding: 8px 16px;
+  float: left;
+  width: auto;
+  border: none;
+  outline: none;
+  display: block
 }
 
-.wrapper-2 p, .wrapper h1 {display: inline;
-  vertical-align: top; }
+.react-button {
+  white-space: normal
+}
 
-.spacer {padding-bottom: 40px;}
+.react-sidebar {
+  height: 100%;
+  width: 200px;
+  background-color: #222121;
+  ;
+  position: fixed!important;
+  z-index: 1;
+  overflow: auto
+}
 
-.greyed-out {color: rgb(77, 77, 83);
-  text-decoration: underline;}
+.react-light-grey {
+  color: rgb(207, 207, 207)!important;
+  background-color: #0a0a0a!important
+}
 
-.siderbar-text {padding: 15px;}
+.react-bar-block {
+  width: 18%;
+  min-width: 18%;
+  text-align: left;
+  padding: 8px 16px
+}
+
+.react-bar-block .react-bar-item {
+  width: 100%;
+  display: block;
+  padding: 6px 16px;
+  text-align: left;
+  border: none;
+  outline: none;
+  white-space: normal;
+  float: none;
+  text-decoration: none;
+}
+
+.react-bar-item-2 {
+  padding: 4px 16px !important;
+  margin: 0 !important;
+}
+
+.react-container {
+  padding: 0.01em 16px;
+}
+
+.react-teal {
+  color: rgb(87, 19, 19)!important;
+  background-color: #009688!important;
+}
+
+.bar-width {
+  width: 18%
+}
+
+.margin-left {
+  margin-left: 18%
+}
+
+.react-bar-block .react-bar-item:hover {
+  background-color: rgb(49, 49, 49);
+}
+
+.wrapper {
+  padding: 15px;
+}
+
+.wrapper-2 {
+  padding: 15px;
+  background-color: rgb(181, 197, 204);
+}
+
+.wrapper-2 p, .wrapper h1 {
+  display: inline;
+  vertical-align: top;
+}
+
+.spacer {
+  padding-bottom: 40px;
+}
+
+.greyed-out {
+  color: rgb(77, 77, 83);
+  text-decoration: underline;
+}
+
+.siderbar-text {
+  padding: 15px;
+}
 
 /* GRID */
 
@@ -51,42 +121,64 @@ h1, h2, h3 {
   grid-column-gap: 10px;
   grid-row-gap: 10px;
   grid-template-columns: 40% 30% 30%;
-  grid-template-rows: 25% 25% 25%; 
-
+  grid-template-rows: 25% 25% 25%;
 }
 
 .grid-box {
   background-color: #444;
- 
-  
 }
 
-.a {grid-column-start: 1;
-  grid-column-end: 3;
-  background-color: white;}  
-
-.b {grid-column-start: 3;
-  grid-column-end: 3;
-  background-color: blue;}
-
-.c {grid-row-start: 2;
+.a {
   grid-column-start: 1;
-  grid-column-end: 2;
-  background-color: yellow;}
-
-.d {grid-row-start: 2;
-  grid-column-start: 2;
   grid-column-end: 3;
-  background-color: green}
+  background-color: white;
+}
 
-.e {grid-row-start: 2;
+.b {
   grid-column-start: 3;
   grid-column-end: 3;
-  background-color: pink}
+  background-color: blue;
+}
 
-  
- .st0{fill:none;stroke:#000000;stroke-width:2;stroke-linecap:round;stroke-linejoin:round;stroke-miterlimit:10;} 
- .st1{fill:#CCCCCC;}
+.c {
+  grid-row-start: 2;
+  grid-column-start: 1;
+  grid-column-end: 2;
+  background-color: yellow;
+}
 
- .car-svg {overflow: hidden;}
+.d {
+  grid-row-start: 2;
+  grid-column-start: 2;
+  grid-column-end: 3;
+  background-color: green
+}
 
+.e {
+  grid-row-start: 2;
+  grid-column-start: 3;
+  grid-column-end: 3;
+  background-color: pink
+}
+
+.st0 {
+  fill: none;
+  stroke: #000000;
+  stroke-width: 2;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+  stroke-miterlimit: 10;
+}
+
+.st1 {
+  fill: #CCCCCC;
+}
+
+.car-svg {
+  overflow: hidden;
+}
+
+.profile {
+  position: relative;
+  bottom: 20px;
+}

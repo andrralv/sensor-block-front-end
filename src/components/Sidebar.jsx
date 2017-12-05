@@ -10,7 +10,10 @@ const Sidebar = () => (
             <Link to="/notifications" className="react-bar-item react-button">Notifications</Link>
             <Link to="/transfer" className="react-bar-item react-button">Transfer Vehicle</Link>
             <Link to="/settings" className="react-bar-item react-button">Settings</Link>
-            
+            <div className="profile">
+                <div className="greyed-out">Toyoko</div>
+                <div className="greyed-out">Manufacturer</div>
+            </div>
         </div>
     )
 export default Sidebar;
