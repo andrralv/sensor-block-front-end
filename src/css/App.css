@@ -5,7 +5,6 @@ body, html {
   margin: 0 !important;
   padding: 0;
   background-color: #ffffff;
-  overflow-y: hidden;
 }
 
 h1, h2, h3 {
@@ -132,33 +131,34 @@ h1, h2, h3 {
   grid-column-start: 1;
   grid-column-end: 3;
   background-color: white;
+  border-bottom:
 }
 
 .b {
   grid-column-start: 3;
   grid-column-end: 3;
-  background-color: blue;
+  background-color: white;
 }
 
 .c {
   grid-row-start: 2;
   grid-column-start: 1;
   grid-column-end: 2;
-  background-color: yellow;
+  background-color: white;
 }
 
 .d {
   grid-row-start: 2;
   grid-column-start: 2;
   grid-column-end: 3;
-  background-color: green
+  background-color: white;
 }
 
 .e {
   grid-row-start: 2;
   grid-column-start: 3;
   grid-column-end: 3;
-  background-color: pink
+  background-color: white;
 }
 
 .st0 {
@@ -172,10 +172,6 @@ h1, h2, h3 {
 
 .st1 {
   fill: #CCCCCC;
-}
-
-.car-svg {
-  overflow: hidden;
 }
 
 .profile {

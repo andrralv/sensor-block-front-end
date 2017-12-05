@@ -36,9 +36,9 @@ const ContractLibrary = {
                 brand: state[0],
                 model: state[1],
                 type: state[2],
-                engine: state[3],
-                extras: state[4],
-                year: state[6],
+                engine: state[3].replace("{", "").replace("}", ""),
+                extras: state[4].replace("{", "[").replace("}", "]").replace("true", "available"),
+                year: state[6].c[0],
                 vin: this.web3.toUtf8(state[5]),
                 lastUpdate: state[7],
             };

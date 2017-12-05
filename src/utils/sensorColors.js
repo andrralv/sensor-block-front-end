@@ -45,12 +45,8 @@ function sensorColors(svg) {
     statuses.push(status_10);
     let status_11 = document.getElementsByTagName("rect")[10];
     statuses.push(status_11);
-
-    statuses.forEach(function(status) {
-        status.style.fill = "red";
-    })
-
-    console.log("Sensor Colors has loaded properly.");
+    
+    statuses.forEach(function(status) {status.style.fill = "red";})
 }
 
 module.exports = sensorColors;

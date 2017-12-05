@@ -13,7 +13,7 @@ const Grid= (props) => (
                 <SensorTable.SensorTableTop />
             </div>
             <div className="grid-box c">
-                <Status />
+                <Status status={props.status}/>
             </div>
             <div className="grid-box d">D</div>
             <div className="grid-box e">
