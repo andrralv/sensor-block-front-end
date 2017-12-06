@@ -7,10 +7,17 @@ import './css/oswald.css'
 import './css/open-sans.css'
 import './css/pure-min.css'
 import './css/App.css'
-
+import './css/loader.css'
 
 class App extends Component {
- 
+
+  constructor(props) {
+    super(props);
+    this.state = {
+      actor: {}
+    };
+  }
+
   pStyle = {
     marginLeft: '25%'
   };
@@ -30,13 +37,13 @@ class App extends Component {
   }
 
   componentWillMount() {
-    ContractLibrary.getInstance();
+    ContractLibrary.getActorData(this);
   }
 
   render() {
     return (
       <div>
-        <Sidebar />
+        <Sidebar actor={this.state.actor} />
         <Main />
       </div>
     );

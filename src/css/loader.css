@@ -1,0 +1,86 @@
+.loader {
+    width: 50px;
+    height: auto;
+    margin-left: auto;
+    margin-right: auto;
+    margin-top: 20%;
+    overflow: hidden;
+}
+
+.loader .bar {
+    height: 25px;
+    width: 5px;
+    background: #5385B8;
+    display: block;
+    float: left;
+    margin-left: 4px;
+    animation: height-change 600ms ease-in-out infinite alternate;
+    -webkit-animation: height-change 600ms ease-in-out infinite alternate;
+    -moz-animation: height-change 600ms ease-in-out infinite alternate;
+}
+
+.loader .bar:first-of-type {
+    margin-left: 0;
+}
+
+.loader .bar-1 {
+    animation-delay: 0;
+    -webkit-animation-delay: 0;
+    -moza-animation-delay: 0;
+}
+
+.loader .bar-2 {
+    animation-delay: 75ms;
+    -webkit-animation-delay: 75ms;
+    -moza-animation-delay: 75ms;
+}
+
+.loader .bar-3 {
+    animation-delay: 150ms;
+    -webkit-animation-delay: 150ms;
+    -moza-animation-delay: 150ms;
+}
+
+.loader .bar-4 {
+    animation-delay: 225ms;
+    -webkit-animation-delay: 225ms;
+    -moza-animation-delay: 225ms;
+}
+
+.loader .bar-5 {
+    animation-delay: 300ms;
+    -webkit-animation-delay: 300ms;
+    -moza-animation-delay: 300ms;
+}
+
+.loader .bar-6 {
+    animation-delay: 375ms;
+    -webkit-animation-delay: 375ms;
+    -moza-animation-delay: 375ms;
+}
+
+@keyframes height-change {
+    0% {
+        height: 22px;
+        background: rgba(67, 112, 159, 1);
+    }
+    50% {
+        height: 15px;
+        background: rgba(83, 133, 184, 1);
+    }
+    100% {
+        height: 15px;
+        background: rgba(83, 133, 184, 1);
+    }
+}
+
+@keyframes height-change-out {
+    0% {
+        height: 15px;
+        background: #43709F;
+    }
+    100% {
+        height: 0;
+        background: #8DB8E3;
+    }
+}
