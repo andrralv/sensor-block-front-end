@@ -5,6 +5,7 @@ body, html {
   margin: 0 !important;
   padding: 0;
   background-color: #ffffff;
+  overflow-y: hidden;
 }
 
 h1, h2, h3 {
@@ -90,9 +91,19 @@ h1, h2, h3 {
   padding: 15px;
 }
 
+.navigation {
+  padding: 15px;
+  background-color: #9c9c9c;
+}
+
+.navigation h1 {
+  padding-left: 22%;
+  color: white;
+}
+
 .wrapper-2 {
   padding: 15px;
-  background-color: rgb(181, 197, 204);
+  background-color: #c9cce6;
 }
 
 .wrapper-2 p, .wrapper h1 {

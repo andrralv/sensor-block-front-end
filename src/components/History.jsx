@@ -1,13 +1,23 @@
 import React, { Component } from 'react';
 import ContractLibrary from '../utils/ContractLibrary'
+<<<<<<< HEAD
 import Loader from './Loader'
+=======
+import Navigation from './Navigation'
+>>>>>>> 79abbb6138bca9e94c31f13354c8276492ef420a
 import '../css/history.css'
 
 export class History extends Component {
     constructor(props) {
         super(props);
         this.state = {
+<<<<<<< HEAD
             history: []
+=======
+            bn: 0,
+            history: [],
+            title: "History"
+>>>>>>> 79abbb6138bca9e94c31f13354c8276492ef420a
         };
     }
 
@@ -20,44 +30,23 @@ export class History extends Component {
         const monthNames = ["January", "February", "March", "April", "May", "June",
             "July", "August", "September", "October", "November", "December"];
         const eventTypes = ["Creation", "Transfer", "ReceivedAtDealer", "ReceivedAtServiceShop",
-            "Maintenance", "Automatic Sensor Data Upload", "ManualSensor", "Sell", "Buy"];
-        const dateFormatOptions = {
-            weekday: 'long',
-            year: 'numeric',
-            month: 'short',
-            day: 'numeric',
-            hour: '2-digit',
-            minute: '2-digit'
-        };
-        const listItems = Object.keys(this.state.history).map((year, index) =>
+            "Maintenance", "AutoSensor", "ManualSensor", "Sell", "Buy"];
+        const listItems = this.state.history.map((row, index) =>
             <section key={index} className="year">
-                <h3>{year}</h3>
-                {
-                    Object.keys(this.state.history[year]).map((month, index) => (
-                        <section key={index}>
-                            <h4>{monthNames[month]}</h4>
-                            <ul>
-                                {
-                                    this.state.history[year][month].map((row, index) => (
-                                        <li key={index}>
-                                            <div className="history-grid">
-                                                <div className="ref">{row.rerefence}</div>
-                                                <div className="block">{row.blockNumber}</div>
-                                                <div className="type">{eventTypes[row.event]}</div>
-                                                <div className="desc">{row.description}</div>
-                                                <div className="day">{row.timestamp.toLocaleString('en-us', dateFormatOptions)}</div>
-                                            </div>
-                                        </li>
-                                    ))
-                                }
-                            </ul>
-                        </section>
-                    ))
-                }
+                <h3>{row.timestamp.getFullYear()}</h3>
+                <section>
+                    <h4>{monthNames[row.timestamp.getMonth()]}</h4>
+                    <ul className="table even">
+                        <li>{row.blockNumber}</li>
+                        <li>{eventTypes[row.event]}</li>
+                        <li>{row.description}</li>
+                    </ul>
+                </section>
             </section>
         );
         return (
             <div className="App">
+            <Navigation title = {this.state.title}/>
                 <div className="margin-left">
                     <div className="container">
                         <div className="wrapper-2">

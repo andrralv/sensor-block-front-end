@@ -22,7 +22,7 @@ class App extends Component {
   pStyle = {
     marginLeft: '25%'
   };
-
+ 
   componentWillMount() {
     ContractLibrary.getActorData(this);
   }
