@@ -7,7 +7,7 @@ import './css/oswald.css'
 import './css/open-sans.css'
 import './css/pure-min.css'
 import './css/App.css'
-
+import './css/loader.css'
 
 class App extends Component {
 
