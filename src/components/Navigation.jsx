@@ -1,10 +1,6 @@
 import React, { Component } from 'react'
 
 export class Navigation extends Component {
-    constructor(props) {
-        super(props);
-        title: props.title;
-    }
 
     render() {
         return ( 

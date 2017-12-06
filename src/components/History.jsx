@@ -15,38 +15,56 @@ export class History extends Component {
 
     componentWillMount() {
         ContractLibrary.getInstance();
-        ContractLibrary.getVehiculeHistory("0x3e4161669Dd2abF0bA33bA63978C44f21ed61Ed7", {}, this);
+        ContractLibrary.getVehiculeHistory("0x3e4161669Dd2abF0bA33bA63978C44f21ed61Ed7", this);
     }
 
     render() {
         const monthNames = ["January", "February", "March", "April", "May", "June",
             "July", "August", "September", "October", "November", "December"];
         const eventTypes = ["Creation", "Transfer", "ReceivedAtDealer", "ReceivedAtServiceShop",
-            "Maintenance", "AutoSensor", "ManualSensor", "Sell", "Buy"];
-        const listItems = this.state.history.map((row, index) =>
+            "Maintenance", "Automatic Sensor Data Upload", "ManualSensor", "Sell", "Buy"];
+        const dateFormatOptions = {
+            weekday: 'long',
+            year: 'numeric',
+            month: 'short',
+            day: 'numeric',
+            hour: '2-digit',
+            minute: '2-digit'
+        };
+        const listItems = Object.keys(this.state.history).map((year, index) =>
             <section key={index} className="year">
-                <h3>{row.timestamp.getFullYear()}</h3>
-                <section>
-                    <h4>{monthNames[row.timestamp.getMonth()]}</h4>
-                    <ul className="table even">
-                        <li>{row.blockNumber}</li>
-                        <li>{eventTypes[row.event]}</li>
-                        <li>{row.description}</li>
-                    </ul>
-                </section>
+                <h3>{year}</h3>
+                {
+                    Object.keys(this.state.history[year]).map((month, index) => (
+                        <section key={index}>
+                            <h4>{monthNames[month]}</h4>
+                            <ul>
+                                {
+                                    this.state.history[year][month].map((row, index) => (
+                                        <li key={index}>
+                                            <div className="history-grid">
+                                                <div className="ref">{row.rerefence}</div>
+                                                <div className="block">{row.blockNumber}</div>
+                                                <div className="type">{eventTypes[row.event]}</div>
+                                                <div className="desc">{row.description}</div>
+                                                <div className="day">{row.timestamp.toLocaleString('en-us', dateFormatOptions)}</div>
+                                            </div>
+                                        </li>
+                                    ))
+                                }
+                            </ul>
+                        </section>
+                    ))
+                }
             </section>
         );
         return (
             <div className="App">
-            <Navigation title = {this.state.title}/>
+                <Navigation title={this.state.title} />
                 <div className="margin-left">
                     <div className="container">
-                        <div className="wrapper-2">
-                            <h1>History</h1>
-                            <h2></h2>
-                        </div>
                         <div className="glow"></div>
-                        {this.state.history.length == 0 ? (<Loader />)
+                        {this.state.history.length === 0 ? (<Loader />)
                             : (
                                 <div className="item">
                                     <div id="timeline">

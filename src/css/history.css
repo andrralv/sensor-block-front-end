@@ -11,6 +11,7 @@ div.glow {
   background: slategrey;
   color: ghostwhite;
   position: relative;
+  margin-top: 2px;
 }
 
 div.glow:after {
