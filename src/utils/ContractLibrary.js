@@ -2,15 +2,18 @@ import TruffleContract from 'truffle-contract'
 import getWeb3 from '../utils/getWeb3'
 import VehiculeABI from '../../build/contracts/Vehicule'
 import ActorABI from '../../build/contracts/Actor'
+import ActorRegistryABI from '../../build/contracts/ActorRegistry'
 
 const ContractLibrary = {
     web3: null,
     contracts: [],
+    actorAddress: null,
     getInstance: async function () {
         if (!this.web3) {
             await getWeb3.then(results => {
                 this.web3 = results.web3;
                 this.initContracts();
+                this.getCurrentActor();
             }).catch((error) => {
                 console.log(error)
             });
@@ -19,8 +22,10 @@ const ContractLibrary = {
     initContracts: function () {
         this.contracts.Vehicule = TruffleContract(VehiculeABI);
         this.contracts.Actor = TruffleContract(ActorABI);
+        this.contracts.ActorRegistry = TruffleContract(ActorRegistryABI);
         this.contracts.Vehicule.setProvider(this.web3.currentProvider);
         this.contracts.Actor.setProvider(this.web3.currentProvider);
+        this.contracts.ActorRegistry.setProvider(this.web3.currentProvider);
     },
     getBlockNumber: async function () {
         if (!this.web3) {
@@ -84,19 +89,36 @@ const ContractLibrary = {
             });
         });
     },
-    getActorData: async function(address, component) {
+    getActorData: async function (component) {
         if (!this.web3) {
             await this.getInstance();
         }
-        await this.contracts.Actor.at(address).then(actor => {
-            console.log("!!ss", actor)
-            return actor.owner();
+        let actor = {};
+        await this.contracts.Actor.at(this.actorAddress).then(actor => {
+            return actor.name();
         }).then(name => {
-            console.log("!!", name)
-            component.setState({
-                actor: name
-            })
-        })
+            actor.name = name;
+        });
+        await this.contracts.Actor.at(this.actorAddress).then(actor => {
+            return actor.database();
+        }).then(database => {
+            actor.database = database;
+        });
+        await this.contracts.Actor.at(this.actorAddress).then(actor => {
+            return actor.actorType();
+        }).then(actorType => {
+            actor.type = actorType;
+        });
+        component.setState({
+            actor: actor
+        });
+    },
+    getCurrentActor: async function () {
+        await this.contracts.ActorRegistry.at("0x173c290Bbd9f14B8ae8C79cb770bABcd472Be1BD").then(registry => {
+            return registry.getActorAddress("0x9840d046A6D23727baa66882e63C77e51544f233");
+        }).then(address => {
+            this.actorAddress = address;
+        });
     }
 }
 
