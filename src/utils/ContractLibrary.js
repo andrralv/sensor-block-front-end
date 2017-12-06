@@ -127,6 +127,29 @@ const ContractLibrary = {
         }).then(address => {
             this.actor.address = address;
         });
+    }, 
+    getSensorData: async function (address, component) {
+        if (!this.web3) {
+            await this.getInstance();
+        }
+        await this.contracts.Vehicule.at(address).then(vehicule => {
+            return vehicule.getState();
+        }).then(state => {
+        this.contracts.Vehicule.at(address).then(vehicule => {
+            vehicule.OnActionEvent({_event: 5}, { fromBlock: state[7].toNumber(), toBlock: 'latest' }).get((error, result) => {
+                let list = {};
+                result.forEach(row => {
+                    var data;
+                    if (row.args._data) {
+                        data = JSON.parse(row.args._data);
+                    }
+                    var date = new Date(row.args._timestamp.c[0] * 1000);
+                    list = data;
+                });
+                console.log(list);
+                });
+            });
+        });
     }
     
 }

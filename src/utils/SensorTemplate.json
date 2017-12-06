@@ -1,0 +1,28 @@
+{
+  "sensors": {
+      "Auto": [
+        {
+          "coolantTemp": 0,
+          "batteryCheck": 0,
+          "oilMeter": 0,
+          "acCompressor": 0,
+          "mileage": 0,
+          "fuelPump": 0,
+          "fuseBox": 0,
+          "barometer": 0,
+          "transmissionFluid": 0,
+          "fuelTank": 0,
+          "Co2Exhaust": 0
+        }
+      ],
+      "Crash": [
+          {
+            "crashFront": 0,
+            "crashRight": 0,
+            "crashLeft": 0,
+            "crashBackRight": 1,
+            "crashBackLeft": 1
+          }
+      ]
+  }
+}
