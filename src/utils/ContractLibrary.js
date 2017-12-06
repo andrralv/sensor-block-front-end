@@ -55,12 +55,12 @@ const ContractLibrary = {
             })
         })
     },
-    getVehiculeHistory: async function (address, filter, component) {
+    getVehiculeHistory: async function (address, component) {
         if (!this.web3) {
             await this.getInstance();
         }
         await this.contracts.Vehicule.at(address).then(vehicule => {
-            vehicule.OnActionEvent(filter, { fromBlock: 0, toBlock: 'latest' }).get((error, result) => {
+            vehicule.OnActionEvent({}, { fromBlock: 0, toBlock: 'latest' }).get((error, result) => {
                 let list = {};
                 result.forEach(row => {
                     var data;
