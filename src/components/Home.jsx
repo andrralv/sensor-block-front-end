@@ -18,7 +18,6 @@ export class Home extends Component {
   }
 
 render() {
-  console.log(this.state.actor);
   return (
   <div className="App">
     <div className="margin-left">

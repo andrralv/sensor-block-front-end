@@ -10,19 +10,26 @@ import './css/App.css'
 
 
 class App extends Component {
- 
+
+  constructor(props) {
+    super(props);
+    this.state = {
+      actor: {}
+    };
+  }
+
   pStyle = {
     marginLeft: '25%'
   };
 
   componentWillMount() {
-    ContractLibrary.getInstance();
+    ContractLibrary.getActorData(this);
   }
 
   render() {
     return (
       <div>
-        <Sidebar />
+        <Sidebar actor={this.state.actor} />
         <Main />
       </div>
     );
