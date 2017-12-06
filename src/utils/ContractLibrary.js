@@ -120,6 +120,7 @@ const ContractLibrary = {
             this.actorAddress = address;
         });
     }
+    
 }
 
 export default ContractLibrary

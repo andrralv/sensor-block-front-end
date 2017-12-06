@@ -15,6 +15,20 @@ class App extends Component {
     marginLeft: '25%'
   };
 
+  constructor(props) {
+    super(props);
+    this.state = {
+        getData: "Home"
+    };
+  }
+
+  getData(val) {
+    console.log(val);
+    this.setState({
+      title: val
+    })
+  }
+
   componentWillMount() {
     ContractLibrary.getInstance();
   }
