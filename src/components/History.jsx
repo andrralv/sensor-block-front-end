@@ -1,12 +1,12 @@
 import React, { Component } from 'react';
 import ContractLibrary from '../utils/ContractLibrary'
+import Loader from './Loader'
 import '../css/history.css'
 
 export class History extends Component {
     constructor(props) {
         super(props);
         this.state = {
-            bn: 0,
             history: []
         };
     }
@@ -65,13 +65,16 @@ export class History extends Component {
                             <h2></h2>
                         </div>
                         <div className="glow"></div>
-                        <div className="item">
-                            <div id="timeline">
-                                <div>
-                                    {listItems}
+                        {this.state.history.length == 0 ? (<Loader />)
+                            : (
+                                <div className="item">
+                                    <div id="timeline">
+                                        <div>
+                                            {listItems}
+                                        </div>
+                                    </div>
                                 </div>
-                            </div>
-                        </div>
+                            )}
                     </div>
                 </div>
             </div>

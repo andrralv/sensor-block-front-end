@@ -1,6 +1,7 @@
 import React, { Component } from 'react'
 import Sidebar from './components/Sidebar'
 import Main from './components/Main'
+import Loader from './components/Loader'
 import ContractLibrary from './utils/ContractLibrary'
 
 import './css/oswald.css'
@@ -29,8 +30,14 @@ class App extends Component {
   render() {
     return (
       <div>
-        <Sidebar actor={this.state.actor} />
-        <Main />
+        {!this.state.actor.name ?
+          (<Loader />) : (
+            <div>
+              <Sidebar actor={this.state.actor} />
+              <Main />
+            </div>
+          )
+        }
       </div>
     );
   }

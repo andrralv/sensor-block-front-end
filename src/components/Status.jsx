@@ -1,81 +1,83 @@
 import React from 'react'
+import Loader from './Loader'
 import '../css/status.css'
 
 const Status = (props) => (
     <div>
-    <table>
-        <thead>
-        <tr>
-        <th>Vehicle Data</th>
-        </tr>
-        </thead>
-    <tbody>
-        <tr>
-            <td>
-            Brand:
+        {!props.status.brand ? (<Loader />)
+            : (
+                <table>
+                    <thead>
+                        <tr>
+                            <th>Vehicle Data</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>
+                                Brand:
             </td>
-            <td>
-            {props.status.brand}
-            </td>
-        </tr>
-        
-        <tr>
-            <td>
-            Model:
-            </td>
-            <td>
-            {props.status.model}
-            </td>
-        </tr>
+                            <td>
+                                {props.status.brand}
+                            </td>
+                        </tr>
 
-        <tr>
-            <td>
-            Year:
+                        <tr>
+                            <td>
+                                Model:
             </td>
-            <td>
-            {props.status.year}
-            </td>
-        </tr>
+                            <td>
+                                {props.status.model}
+                            </td>
+                        </tr>
 
-        <tr>
-            <td>
-            Vin:
+                        <tr>
+                            <td>
+                                Year:
             </td>
-            <td>
-            {props.status.vin}
-            </td>
-        </tr>
+                            <td>
+                                {props.status.year}
+                            </td>
+                        </tr>
 
-        <tr>
-            <td>
-            Type:
+                        <tr>
+                            <td>
+                                Vin:
             </td>
-            <td>
-            {props.status.type}
-            </td>
-        </tr>
+                            <td>
+                                {props.status.vin}
+                            </td>
+                        </tr>
 
-        <tr>
-            <td>
-            Engine: 
+                        <tr>
+                            <td>
+                                Type:
             </td>
-            <td>
-            {props.status.engine}
-            </td>
-        </tr>
+                            <td>
+                                {props.status.type}
+                            </td>
+                        </tr>
 
-        <tr>
-            <td>
-            Extras:
+                        <tr>
+                            <td>
+                                Engine:
             </td>
-            <td>
-            {props.status.extras}
+                            <td>
+                                {props.status.engine}
+                            </td>
+                        </tr>
+
+                        <tr>
+                            <td>
+                                Extras:
             </td>
-        </tr>
-
-
-    </tbody>
-    </table>
+                            <td>
+                                {props.status.extras}
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+            )}
     </div>
 )
 
