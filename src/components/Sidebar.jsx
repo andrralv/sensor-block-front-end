@@ -2,7 +2,7 @@ import React from 'react'
 import { Link } from 'react-router-dom'
 
 const Sidebar = (props) => (
-        <div className="react-sidebar react-light-grey react-bar-block bar-width"> 
+        <div className="react-sidebar react-blue react-bar-block bar-width"> 
             <h3 className="siderbar-text">Sensor-Block</h3>
             <div className="spacer"></div>
             <Link to="/" className="react-bar-item react-button">Vehicle Info</Link>
@@ -11,8 +11,8 @@ const Sidebar = (props) => (
             <Link to="/transfer" className="react-bar-item react-button">Transfer Vehicle</Link>
             <Link to="/settings" className="react-bar-item react-button">Settings</Link>
             <div className="siderbar-text profile">
-                <div className="react-light-grey">{props.actor.name}</div>
-                <div className="react-light-grey">Manufacturer</div>
+                <div >{props.actor.name}</div>
+                <div >{props.actor.typeName}</div>
             </div>
         </div>
     )

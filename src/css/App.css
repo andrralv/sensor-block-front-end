@@ -42,6 +42,11 @@ h1, h2, h3 {
   background-color: #0a0a0a!important
 }
 
+.react-blue {
+  color: rgb(240, 240, 240)!important;
+  background-color: rgb(35, 124, 212)!important;
+}
+
 .react-bar-block {
   width: 18%;
   min-width: 18%;
@@ -84,7 +89,7 @@ h1, h2, h3 {
 }
 
 .react-bar-block .react-bar-item:hover {
-  background-color: rgb(49, 49, 49);
+  background-color: rgb(12, 75, 134)!important;
 }
 
 .wrapper {
@@ -93,17 +98,16 @@ h1, h2, h3 {
 
 .navigation {
   padding: 15px;
-  background-color: #9c9c9c;
+  border-bottom: 2px solid rgb(35, 124, 212) !important;
 }
 
 .navigation h1 {
   padding-left: 22%;
-  color: white;
+  color: rgb(12, 75, 134);
 }
 
 .wrapper-2 {
   padding: 15px;
-  background-color: #c9cce6;
 }
 
 .wrapper-2 p, .wrapper h1 {
@@ -135,7 +139,9 @@ h1, h2, h3 {
 }
 
 .grid-box {
-  background-color: #444;
+  border-bottom: 2px solid rgb(138, 138, 138) !important;
+  border-left: 1px solid rgb(174, 175, 175) !important;
+  padding: 10px;
 }
 
 .a {

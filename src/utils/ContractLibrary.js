@@ -110,6 +110,15 @@ const ContractLibrary = {
             return actor.actorType();
         }).then(actorType => {
             this.actor.type = actorType.toNumber();
+            this.actor.typeName = ((atype)=>{
+                switch(atype){
+                    case 0 : return "Manufacturer";
+                    case 1 : return "Dealer";
+                    case 2 : return "Service Shop";
+                    case 3 : return "Owner";
+                    default : return "";
+                }
+            })(actorType.toNumber());
         });
         component.setState({
             actor: this.actor
