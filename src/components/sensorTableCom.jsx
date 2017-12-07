@@ -16,26 +16,10 @@ export class SensorTableCom extends Component {
 
   render() {
     let keysProps = this.state.sensors
-    let listTemplate = []
-    let listJson = []
 
-    // Object.keys(keysProps).forEach(function(key, val) {
-    //   listJson.push(key)
-    // });
-    
-    // console.log("-----------");
     var keys1 = jsonTemplate.sensors.auto
     var keys2 = jsonTemplate.sensors.crash
 
-    var keys3 = jsonTemplate.sensors.crash
-    console.log(keys3)
-
-    // Object.keys(keys1).forEach(function(key, val) {
-    //   listTemplate.push(key)
-    // });
-    
-
-    //here
     Object.values(keysProps).forEach(function(valJson, index) {
       Object.values(keys1).forEach(function(valTemplate, index) {
         if (valJson !== valTemplate) {
