@@ -4,7 +4,8 @@ import Loader from './Loader'
 const Actor = (props) => (
     <div>
         {!props.actor.name && <Loader />}
-        <h1>{props.actor.name}</h1>
+        <h5>{props.actor.name}</h5>
+        <p>{props.actor.owner}</p>
     </div>
 )
 

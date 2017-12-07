@@ -107,6 +107,11 @@ const ContractLibrary = {
             this.actor.database = database;
         });
         await this.contracts.Actor.at(this.actor.address).then(actor => {
+            return actor.owner();
+        }).then(owner => {
+            this.actor.owner = owner;
+        });
+        await this.contracts.Actor.at(this.actor.address).then(actor => {
             return actor.actorType();
         }).then(actorType => {
             this.actor.type = actorType.toNumber();
