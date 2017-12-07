@@ -10,6 +10,9 @@ const Sidebar = (props) => (
             <Link to="/notifications" className="react-bar-item react-button">Notifications</Link>
             <Link to="/transfer" className="react-bar-item react-button">Transfer Vehicle</Link>
             <Link to="/settings" className="react-bar-item react-button">Settings</Link>
+            <Link to="/receive" className="react-bar-item react-button">Receive Vehicule</Link>
+            <Link to="/release" className="react-bar-item react-button">Release Vehicule</Link>
+            <Link to="/service" className="react-bar-item react-button">Service</Link>
             <div className="siderbar-text profile">
                 <div >{props.actor.name}</div>
                 <div >{props.actor.typeName}</div>
