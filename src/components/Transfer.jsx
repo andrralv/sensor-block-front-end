@@ -51,14 +51,16 @@ export class Transfer extends Component {
                                         }
                                     </div>
                                     <div className="transfer-box">
-                                        <div id="transfer-form">
-                                            <i className="material-icons next">arrow_forward</i>
-                                            <div id="inputContainer">
-                                                <input id="inputField" required autoFocus />
-                                                <label id="inputLabel">Address</label>
-                                                <div id="inputProgress"></div>
+                                        {this.state.status.brand &&
+                                            <div id="transfer-form">
+                                                <i className="material-icons w3-xxlarge next">arrow_forward</i>
+                                                <div id="inputContainer">
+                                                    <input id="inputField" required autoFocus />
+                                                    <label id="inputLabel">Address</label>
+                                                    <div id="inputProgress"></div>
+                                                </div>
                                             </div>
-                                        </div>
+                                        }
                                     </div>
                                 </div>
                             )}
