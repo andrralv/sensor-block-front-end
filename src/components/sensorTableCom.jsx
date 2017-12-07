@@ -16,17 +16,11 @@ export class SensorTableCom extends Component {
 
   render() {
     let keysProps = this.state.sensors
-    let listTemplate = []
-    let listJson = []
 
-    // Object.keys(keysProps).forEach(function(key, val) {
-    //   listJson.push(key)
-    // });
-    
-    // console.log("-----------");
     var keys1 = jsonTemplate.sensors.auto
     var keys2 = jsonTemplate.sensors.crash
 
+<<<<<<< HEAD
     var keys3 = jsonTemplate.sensors.crash
 
     // Object.keys(keys1).forEach(function(key, val) {
@@ -38,6 +32,17 @@ export class SensorTableCom extends Component {
     });;
     console.log(keys1);   
     
+=======
+    Object.values(keysProps).forEach(function(valJson, index) {
+      Object.values(keys1).forEach(function(valTemplate, index) {
+        if (valJson !== valTemplate) {
+          jsonTemplate.sensors.auto[valTemplate] = valJson
+        }
+      })
+    });
+    
+    console.log(jsonTemplate)
+>>>>>>> 79bad675ad4125abf7482d877b1a105ccb412618
       return ( 
         <li></li>
       )
