@@ -7,12 +7,12 @@
           "oilMeter": 0,
           "acCompressor": 0,
           "mileage": 0,
-          "fuelPump": 0,
+          "fuelInjection": 0,
           "fuseBox": 0,
           "barometer": 0,
           "transmissionFluid": 0,
           "fuelTank": 0,
-          "co2Exhaust": 0
+          "co2exhaust": 0
         }
       ,
       "crash": 

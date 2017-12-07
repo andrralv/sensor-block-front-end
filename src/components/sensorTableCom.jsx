@@ -6,7 +6,7 @@ export class SensorTableCom extends Component {
   constructor(props) {
     super(props);
     this.state = {
-        sensors: []
+        sensors: {}
     };
   }
 
@@ -28,23 +28,16 @@ export class SensorTableCom extends Component {
     var keys2 = jsonTemplate.sensors.crash
 
     var keys3 = jsonTemplate.sensors.crash
-    console.log(keys3)
 
     // Object.keys(keys1).forEach(function(key, val) {
     //   listTemplate.push(key)
     // });
+    console.log(this.state.sensors);
+    Object.keys(keys1).forEach(key => {
+      keys1[key]=this.state.sensors[key];
+    });;
+    console.log(keys1);   
     
-
-    //here
-    Object.values(keysProps).forEach(function(valJson, index) {
-      Object.values(keys1).forEach(function(valTemplate, index) {
-        if (valJson !== valTemplate) {
-          jsonTemplate.sensors.auto[valTemplate] = valJson
-        }
-      })
-    });
-    
-    console.log(jsonTemplate)
       return ( 
         <li></li>
       )
