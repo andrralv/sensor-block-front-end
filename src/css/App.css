@@ -142,6 +142,11 @@ h1, h2, h3 {
   border-bottom: 2px solid rgb(138, 138, 138) !important;
   border-left: 1px solid rgb(174, 175, 175) !important;
   padding: 10px;
+  border-bottom-left-radius: 5px;
+}
+
+.grid-box table {
+  width: 100%;
 }
 
 .a {
@@ -193,4 +198,8 @@ h1, h2, h3 {
 .profile {
   position: absolute;
   bottom: 20px;
+}
+
+.text-smaller {
+  font-size: x-small;
 }

@@ -9,7 +9,7 @@ const Status = (props) => (
                 <table>
                     <thead>
                         <tr>
-                            <th>Vehicle Data</th>
+                            <th colSpan="2">Vehicle Data</th>
                         </tr>
                     </thead>
                     <tbody>

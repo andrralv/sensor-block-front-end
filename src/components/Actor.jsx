@@ -3,9 +3,24 @@ import Loader from './Loader'
 
 const Actor = (props) => (
     <div>
-        {!props.actor.name && <Loader />}
-        <h5>{props.actor.name}</h5>
-        <p>{props.actor.owner}</p>
+        {!props.actor.name ? (<Loader />)
+            : (<table>
+                <thead>
+                    <tr>
+                        <th>Owner Information</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>{props.actor.name}</td>
+                    </tr>
+                    <tr>
+                        <td className="text-smaller">{props.actor.owner}</td>
+                    </tr>
+                </tbody>
+            </table>
+            )
+        }
     </div>
 )
 
