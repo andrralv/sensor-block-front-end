@@ -5,13 +5,13 @@ import Status from './Status'
 import Actor from './Actor'
 
 const Grid = (props) => (
-
+    
     <div className="grid-wrapper">
         <div className="grid-box a">
             <Car />
         </div>
         <div className="grid-box b">
-            <SensorTable.SensorTableTop />
+            <SensorTable.SensorTableTop sensors={props.sensors} />
         </div>
         <div className="grid-box c">
             <Status status={props.status} />

@@ -138,15 +138,18 @@ const ContractLibrary = {
         });
     }, 
     getSensorData: async function (address, component) {
+        let list = {};
         if (!this.web3) {
             await this.getInstance();
         }
+
         await this.contracts.Vehicule.at(address).then(vehicule => {
             return vehicule.getState();
         }).then(state => {
+            
         this.contracts.Vehicule.at(address).then(vehicule => {
+            var list;
             vehicule.OnActionEvent({_event: 5}, { fromBlock: state[7].toNumber(), toBlock: 'latest' }).get((error, result) => {
-                let list = {};
                 result.forEach(row => {
                     var data;
                     if (row.args._data) {
@@ -155,10 +158,13 @@ const ContractLibrary = {
                     var date = new Date(row.args._timestamp.c[0] * 1000);
                     list = data;
                 });
-                console.log(list);
+                console.log("0: ", list)
+                return list;
                 });
             });
         });
+    
+    
     }
     
 }

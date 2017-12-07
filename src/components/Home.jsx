@@ -21,12 +21,13 @@ export class Home extends Component {
   }
 
 render() {
+  console.log("1 ", this.state.sensors)
   return (
   <div className="App">
     <Navigation title={this.state.title}/>
     <div className="margin-left">
       <div className="wrapper-2">
-        <Grid status={this.state.status} actor={this.state.actor}/>
+        <Grid status={this.state.status} actor={this.state.actor} sensors={this.state.sensors}/>
       </div>
     </div>
   </div>
