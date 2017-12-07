@@ -17,7 +17,7 @@ export class Home extends Component {
   componentWillMount() {
     ContractLibrary.getVehiculeStatus("0x3e4161669Dd2abF0bA33bA63978C44f21ed61Ed7", this);
     ContractLibrary.getActorData(this);
-    // ContractLibrary.getSensorData("0x3e4161669Dd2abF0bA33bA63978C44f21ed61Ed7", this);
+    ContractLibrary.getSensorData("0x3e4161669Dd2abF0bA33bA63978C44f21ed61Ed7", this);
   }
 
 render() {
