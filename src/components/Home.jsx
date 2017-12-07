@@ -21,7 +21,6 @@ export class Home extends Component {
   }
 
 render() {
-  console.log("1 ", this.state.sensors)
   return (
   <div className="App">
     <Navigation title={this.state.title}/>

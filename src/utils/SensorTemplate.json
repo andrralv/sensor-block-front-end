@@ -1,6 +1,6 @@
 {
   "sensors": {
-      "Auto": [
+      "auto": 
         {
           "coolantTemp": 0,
           "batteryCheck": 0,
@@ -12,10 +12,10 @@
           "barometer": 0,
           "transmissionFluid": 0,
           "fuelTank": 0,
-          "Co2Exhaust": 0
+          "co2Exhaust": 0
         }
-      ],
-      "Crash": [
+      ,
+      "crash": 
           {
             "crashFront": 0,
             "crashRight": 0,
@@ -23,6 +23,6 @@
             "crashBackRight": 1,
             "crashBackLeft": 1
           }
-      ]
+      
   }
 }

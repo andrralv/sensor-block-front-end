@@ -1,77 +1,35 @@
 import React, { Component } from 'react'
+import jsonTemplate from '../utils/SensorTemplate.json'
+
+const wb = function(props) {
+  var keys1 = jsonTemplate.sensors.auto
+  var keys2 = jsonTemplate.sensors.crash
+
+  var sensorKeys = props.sensors
+  console.log("sensorkeys:", sensorKeys)
+  Object.keys(sensorKeys).forEach(function(key, val) {
+    console.log("1", key);
+  });
+
+  Object.keys(keys2).forEach(function(key, val) {
+    console.log("2", key);
+  });
+}
 
 const SensorTableTop = (props) => (
-  <div>
-    {props.sensors.co2exhaust}
-  </div>
+  <ul className="sensorList">
+    <li>Co2Exhaust: &nbsp; {props.sensors.co2exhaust}</li>
+    <li>Co2Exhaust: &nbsp; {props.sensors.co2exhaust}</li>
+    <li>Co2Exhaust: &nbsp; {props.sensors.co2exhaust}</li>
+    <li>Co2Exhaust: &nbsp; {props.sensors.co2exhaust}</li>
+    <li>Co2Exhaust: &nbsp; {props.sensors.co2exhaust}</li>
+    <li>Co2Exhaust: &nbsp; {props.sensors.co2exhaust}</li>
+
+  </ul>
 )
   
   const SensorTableBottom = () => (
-  <table>
-  <thead>
-    <tr>
-    <th>Sensors</th>
-    </tr>
-    </thead>
-  <tbody>
-  <tr>
-    <td>
-    Hola
-    </td>
-    <td>
-    Adios
-    </td>
-  </tr>
-  <tr>
-    <td>
-    Hola
-    </td>
-    <td>
-    Adios
-    </td>
-  </tr>
-  <tr>
-    <td>
-    Hola
-    </td>
-    <td>
-    Adios
-    </td>
-  </tr>
-  <tr>
-    <td>
-    Hola
-    </td>
-    <td>
-    Adios
-    </td>
-  </tr>
-  <tr>
-    <td>
-    Hola
-    </td>
-    <td>
-    Adios
-    </td>
-  </tr>
-  <tr>
-    <td>
-    Hola
-    </td>
-    <td>
-    Adios
-    </td>
-  </tr>
-  <tr>
-    <td>
-    Hola
-    </td>
-    <td>
-    Adios
-    </td>
-  </tr>
-  </tbody>
-</table>
+  <div></div>
  )
 
  module.exports = {

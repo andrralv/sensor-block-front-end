@@ -1,6 +1,7 @@
 import TruffleContract from 'truffle-contract'
 import getWeb3 from '../utils/getWeb3'
 import VehiculeABI from '../../build/contracts/Vehicule'
+import DatabaseABI from '../../build/contracts/VehiculeDatabase'
 import ActorABI from '../../build/contracts/Actor'
 import ActorRegistryABI from '../../build/contracts/ActorRegistry'
 
@@ -23,9 +24,11 @@ const ContractLibrary = {
         this.contracts.Vehicule = TruffleContract(VehiculeABI);
         this.contracts.Actor = TruffleContract(ActorABI);
         this.contracts.ActorRegistry = TruffleContract(ActorRegistryABI);
+        this.contracts.Database = TruffleContract(DatabaseABI);
         this.contracts.Vehicule.setProvider(this.web3.currentProvider);
         this.contracts.Actor.setProvider(this.web3.currentProvider);
         this.contracts.ActorRegistry.setProvider(this.web3.currentProvider);
+        this.contracts.Database.setProvider(this.web3.currentProvider);
     },
     getBlockNumber: async function () {
         if (!this.web3) {
@@ -93,8 +96,14 @@ const ContractLibrary = {
         if (!this.web3) {
             await this.getInstance();
         }
-        if(!this.actor.address){
+        if (!this.actor.address) {
             await this.getCurrentActor();
+        }
+        if (this.actor.name) {
+            component.setState({
+                actor: this.actor
+            });
+            return;
         }
         await this.contracts.Actor.at(this.actor.address).then(actor => {
             return actor.name();
@@ -107,16 +116,21 @@ const ContractLibrary = {
             this.actor.database = database;
         });
         await this.contracts.Actor.at(this.actor.address).then(actor => {
+            return actor.owner();
+        }).then(owner => {
+            this.actor.owner = owner;
+        });
+        await this.contracts.Actor.at(this.actor.address).then(actor => {
             return actor.actorType();
         }).then(actorType => {
             this.actor.type = actorType.toNumber();
-            this.actor.typeName = ((atype)=>{
-                switch(atype){
-                    case 0 : return "Manufacturer";
-                    case 1 : return "Dealer";
-                    case 2 : return "Service Shop";
-                    case 3 : return "Owner";
-                    default : return "";
+            this.actor.typeName = ((atype) => {
+                switch (atype) {
+                    case 0: return "Manufacturer";
+                    case 1: return "Dealer";
+                    case 2: return "Service Shop";
+                    case 3: return "Owner";
+                    default: return "";
                 }
             })(actorType.toNumber());
         });
@@ -125,7 +139,7 @@ const ContractLibrary = {
         });
     },
     getCurrentActor: async function () {
-        if(this.actor.address){
+        if (this.actor.address) {
             return;
         }
         if (!this.web3) {
@@ -136,37 +150,51 @@ const ContractLibrary = {
         }).then(address => {
             this.actor.address = address;
         });
-    }, 
+    },
     getSensorData: async function (address, component) {
-        let list = {};
         if (!this.web3) {
             await this.getInstance();
         }
-
         await this.contracts.Vehicule.at(address).then(vehicule => {
             return vehicule.getState();
         }).then(state => {
-            
-        this.contracts.Vehicule.at(address).then(vehicule => {
-            var list;
-            vehicule.OnActionEvent({_event: 5}, { fromBlock: state[7].toNumber(), toBlock: 'latest' }).get((error, result) => {
-                result.forEach(row => {
-                    var data;
-                    if (row.args._data) {
-                        data = JSON.parse(row.args._data);
-                    }
-                    var date = new Date(row.args._timestamp.c[0] * 1000);
-                    list = data;
-                });
-                console.log("0: ", list)
-                return list;
+            this.contracts.Vehicule.at(address).then(vehicule => {
+                vehicule.OnActionEvent({ _event: 5 }, { fromBlock: state[7].toNumber(), toBlock: 'latest' }).get((error, result) => {
+                    let list = {};
+                    result.forEach(row => {
+                        var data;
+                        if (row.args._data) {
+                            data = JSON.parse(row.args._data);
+                        }
+                        list = data;
+                    });
+                    component.setState({
+                        sensors : list
+                    })
                 });
             });
         });
-    
-    
+    },
+    getVehicules: async function (component) {
+        if (!this.web3) {
+            await this.getInstance();
+        }
+        await this.contracts.Database.at(this.actor.database).then(database => {
+            database.OnAddVehiculeEvent({}, { fromBlock: 0, toBlock: 'latest' }).get((error, result) => {
+                let list = [];
+                result.forEach(row => {
+                    list.push({
+                        vin: this.web3.toUtf8(row.args._vin),
+                        address: row.args._vehiculeRef
+                    });
+                });
+                component.setState({
+                    vehicules : list
+                });
+            });
+        })
     }
-    
+
 }
 
 export default ContractLibrary
