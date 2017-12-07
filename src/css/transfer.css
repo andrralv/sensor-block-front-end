@@ -8,6 +8,7 @@
 
 .transfer-box {
     grid-area: transfer;
+    margin: 0 auto;
 }
 
 .transfer-grid {
@@ -18,8 +19,13 @@
     grid-template-areas: "vehicules" "status" "transfer"
 }
 
-.transfer-grid table {
-    width: 100%;
+.status-box table {
+    width: 80%;
+    margin: 0 auto;
+}
+
+.status-box table td {
+    padding-left: 10%;
 }
 
 .vehicules-box ol {
@@ -28,7 +34,7 @@
 
 @media only screen and (min-width: 500px) {
     .transfer-grid {
-        grid-template-columns: 20% auto;
+        grid-template-columns: 40% auto;
         grid-template-rows: 25% auto;
         grid-template-areas: "vehicules status" "vehicules transfer";
     }
@@ -37,7 +43,7 @@
 @media only screen and (min-width: 600px) {
     .transfer-grid {
         grid-gap: 30px;
-        grid-template-columns: 20% auto;
+        grid-template-columns: 40% auto;
         grid-template-rows: 25% auto;
         grid-template-areas: "vehicules status" "vehicules transfer";
     }
@@ -130,7 +136,7 @@
     right: 20px;
     bottom: 10px;
     font-size: 40px;
-    color: #25a3ff;
+    color: rgb(35, 124, 212);
     float: right;
     cursor: pointer;
 }
@@ -185,7 +191,7 @@
 
 #inputProgress {
     position: absolute;
-    border-bottom: 2px solid #25a3ff;
+    border-bottom: 2px solid rgb(35, 124, 212);
     padding: 3px 0;
     width: 100%;
     transition: width .6s ease-in-out;
