@@ -55,13 +55,14 @@ export class ReleaseVehicule extends Component {
                                         {this.state.status.brand &&
                                             <div id="blue-form">
                                                 <div className="form-container">
-                                                    <input className="input-field" required autoFocus />
+                                                    <span className="input-addon">$</span>
+                                                    <input className="input-field" required autoFocus type="number" min="0" step="0.1" data-number-to-fixed="2" />
                                                     <label className="input-label">Amount</label>
                                                     <div className="input-subline"></div>
                                                 </div>
                                                 <div className="form-container">
-                                                    <input className="input-field" required />
-                                                    <label className="input-label">Elapsed Time</label>
+                                                    <input className="input-field" required type="number" min="0" step="0.5" data-number-to-fixed="2"/>
+                                                    <label className="input-label">Elapsed Time (Hours)</label>
                                                     <div className="input-subline"></div>
                                                 </div>
                                                 <i className="material-icons w3-xxlarge next">arrow_forward</i>
