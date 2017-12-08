@@ -4,6 +4,7 @@
 
 .status-box {
     grid-area: status;
+    margin: 0 auto;
 }
 
 .transfer-box {

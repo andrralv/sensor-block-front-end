@@ -169,7 +169,7 @@ const ContractLibrary = {
                         list = data;
                     });
                     component.setState({
-                        sensors : list
+                        sensors: list
                     })
                 });
             });
@@ -189,10 +189,34 @@ const ContractLibrary = {
                     });
                 });
                 component.setState({
-                    vehicules : list
+                    vehicules: list
                 });
             });
         })
+    },
+    getLatestMaintenance: async function (address, component) {
+        if (!this.web3) {
+            await this.getInstance();
+        }
+        let vehicule = await this.contracts.Vehicule.at(address);
+        let state = await vehicule.getState();
+        vehicule.OnActionEvent({ _event: 4 }, { fromBlock: state[7].toNumber(), toBlock: 'latest' }).get((error, result) => {
+            let data = {};
+            result.forEach(row => {
+                var date = new Date(row.args._timestamp.c[0] * 1000);
+                data = {
+                    event: row.args._event.c[0],
+                    rerefence: row.args._ref,
+                    description: row.args._description,
+                    timestamp: date,
+                    blockNumber: row.args._blockNumber.c[0]
+                };
+            });
+            component.setState({
+                history: data,
+                loading: false
+            })
+        });
     }
 
 }
