@@ -11,7 +11,7 @@ export class SensorTableCom extends Component {
     };
   }
 
-componentWillReceiveProps() {
+  componentWillReceiveProps() {
     if (this.props.sensors) {
       this.setState({
         loading: false
@@ -25,7 +25,7 @@ componentWillReceiveProps() {
         return s[0].toUpperCase() + s.slice(1);
     }
     let l = []
-    var keys1 = jsonTemplate.sensors.auto
+    var keys1 = jsonTemplate.sensors.crash
 
     Object.keys(keys1).forEach(key => {
       keys1[key]=this.props.sensors[key];
@@ -34,7 +34,7 @@ componentWillReceiveProps() {
     for (var key in keys1) {
       if(keys1.hasOwnProperty(key)){
         if (keys1[key] == undefined) {keys1[key] = 0}
-      }
+        }
     }
 
     const temp = Object.keys(keys1).map((key, index) => 
@@ -43,10 +43,10 @@ componentWillReceiveProps() {
     return (
       this.state.loading ? (<Loader />)
         : (
-        <div className="table-li-larger">
+        <div className="table-li">
           <table>
             <thead>
-              <th>Performance Sensors</th>
+              <th>Crash Sensors</th>
               {temp}
             </thead>
           </table>

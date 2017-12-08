@@ -1,5 +1,7 @@
-function sensorColors(svg) {
 
+
+function sensorColors(svg, props) {
+    console.log("en colors:", props)
     // colors for the crash sensors
     let crashes = [];
 
@@ -21,6 +23,7 @@ function sensorColors(svg) {
     crashes.forEach(function(crash) {
         crash.style.fill = "yellow";
     })
+
     let statuses = [];
     // colors for the status sensors
     let status_1 = document.getElementsByTagName("rect")[0];

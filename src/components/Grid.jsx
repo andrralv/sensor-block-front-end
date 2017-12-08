@@ -2,22 +2,19 @@ import React from 'react'
 import Car from './Car'
 import SensorTable from './SensorTable'
 import SensorTableCom from './SensorTableCom'
+import SensorTableCrash from './SensorTableCrash'
 
 import Status from './Status'
 import Actor from './Actor'
-
-function x(props){
-    console.log(props.sensors)
-}
 
 const Grid = (props) => (
     
     <div className="grid-wrapper">
         <div className="grid-box a">
-            <Car />
+            <Car sensors={props.sensors}/>
         </div>
         <div className="grid-box b">
-            <SensorTableCom sensors={props.sensors} />
+            <SensorTableCom sensors={props.sensors}/>
         </div>
         <div className="grid-box c">
             <Status status={props.status} />
@@ -26,7 +23,7 @@ const Grid = (props) => (
             <Actor actor={props.actor} />
         </div>
         <div className="grid-box e">
-            <SensorTable.SensorTableBottom />
+            <SensorTableCrash sensors={props.sensors}/>
         </div>
     </div>
 )
