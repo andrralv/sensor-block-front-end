@@ -1,12 +1,14 @@
 import React, { Component } from 'react'
 import jsonTemplate from '../utils/SensorTemplate.json'
 import ContractLibrary from '../utils/ContractLibrary'
+import Loader from './Loader'
 
 export class SensorTableCom extends Component {
   constructor(props) {
     super(props);
     this.state = {
-        sensors: {}
+        sensors: {}, 
+        loading: true
     };
   }
 
@@ -37,16 +39,17 @@ export class SensorTableCom extends Component {
     );
     
     return (
-      <div className="table-li">
-        <ul>
+      this.state.loading ? (<Loader />)
+        : (
+        <div className="table-li-larger">
           <table>
             <thead>
               <th>Performance Sensors</th>
               {temp}
             </thead>
           </table>
-        </ul>
       </div>
+      )
     )
   }
 }

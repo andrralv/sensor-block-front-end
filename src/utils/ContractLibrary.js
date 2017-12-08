@@ -169,7 +169,8 @@ const ContractLibrary = {
                         list = data;
                     });
                     component.setState({
-                        sensors : list
+                        sensors : list,
+                        loading : false
                     })
                 });
             });

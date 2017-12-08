@@ -1,12 +1,14 @@
 import React, { Component } from 'react'
 import jsonTemplate from '../utils/SensorTemplate.json'
 import ContractLibrary from '../utils/ContractLibrary'
+import Loader from './Loader'
 
 export class SensorTableCom extends Component {
   constructor(props) {
     super(props);
     this.state = {
-        sensors: {}
+        sensors: {},
+        loading: true
     };
   }
 
@@ -35,18 +37,19 @@ export class SensorTableCom extends Component {
     const temp = Object.keys(keys1).map((key, index) => 
       <tr><td className="li-list" key={index}>{cap(key)}</td><td>{keys1[key]}</td></tr>
     );
-    
+    console.log(keys1)
     return (
-      <div className="table-li">
-        <ul>
+      this.state.loading ? (<Loader />)
+        : (
+        <div className="table-li">
           <table>
             <thead>
-              <th>Performance Sensors</th>
+              <th>Crash Sensors</th>
               {temp}
             </thead>
           </table>
-        </ul>
       </div>
+      )
     )
   }
 }

@@ -3,13 +3,13 @@ import Loader from './Loader'
 import '../css/status.css'
 
 const Status = (props) => (
-    <div>
+    <div className="go-left">
         {!props.status.brand ? (<Loader />)
             : (
                 <table>
                     <thead>
                         <tr>
-                            <th colSpan="2">Vehicle Data</th>
+                            <th className="title-left">Vehicle Data</th>
                         </tr>
                     </thead>
                     <tbody>

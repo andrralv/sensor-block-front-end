@@ -220,3 +220,15 @@ table th {
 
 .table-li {padding-right: 15% !important;}
 
+.table-li-larger {padding-right: 11% !important;}
+
+tbody {font-size: 0.9em;}
+
+.go-left {padding-left: 24%;}
+
+.title-left {padding-left: 20%;}
+
+.aligner {width: 500px;}
+
+.make-blue {color: rgb(12, 75, 134);
+  text-decoration: underline;}
