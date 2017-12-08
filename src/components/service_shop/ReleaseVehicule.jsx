@@ -54,13 +54,20 @@ export class ReleaseVehicule extends Component {
                                     <div className="transfer-box">
                                         {this.state.status.brand &&
                                             <div id="blue-form">
-                                                <i className="material-icons w3-xxlarge next">arrow_forward</i>
                                                 <div className="form-container">
                                                     <input className="input-field" required autoFocus />
                                                     <label className="input-label">Amount</label>
                                                     <div className="input-subline"></div>
-                                                    <input className="input-field" required autoFocus />
+                                                </div>
+                                                <div className="form-container">
+                                                    <input className="input-field" required />
                                                     <label className="input-label">Elapsed Time</label>
+                                                    <div className="input-subline"></div>
+                                                </div>
+                                                <i className="material-icons w3-xxlarge next">arrow_forward</i>
+                                                <div className="form-container">
+                                                    <textarea className="input-field" cols="40" rows="5" />
+                                                    <label className="input-label">Comments</label>
                                                     <div className="input-subline"></div>
                                                 </div>
                                             </div>
