@@ -1,4 +1,4 @@
-import SensorTableCom from '../components/SensorTableCom'
+
 
 function sensorColors(svg) {
 
