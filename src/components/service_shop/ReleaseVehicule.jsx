@@ -15,6 +15,7 @@ export class ReleaseVehicule extends Component {
             vehicules: [],
             history: [],
             status: {},
+            loading: true,
             title: "Release Vehicule"
         };
     }

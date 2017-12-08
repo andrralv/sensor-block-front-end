@@ -14,6 +14,7 @@ export class Transfer extends Component {
         this.state = {
             vehicules: [],
             status: {},
+            loading: true,
             title: "Transfer"
         };
     }

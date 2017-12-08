@@ -54,7 +54,8 @@ const ContractLibrary = {
                 lastUpdate: state[7],
             };
             component.setState({
-                status: statusList
+                status: statusList,
+                loading: false
             })
         })
     },
@@ -105,35 +106,22 @@ const ContractLibrary = {
             });
             return;
         }
-        await this.contracts.Actor.at(this.actor.address).then(actor => {
-            return actor.name();
-        }).then(name => {
-            this.actor.name = name;
-        });
-        await this.contracts.Actor.at(this.actor.address).then(actor => {
-            return actor.database();
-        }).then(database => {
-            this.actor.database = database;
-        });
-        await this.contracts.Actor.at(this.actor.address).then(actor => {
-            return actor.owner();
-        }).then(owner => {
-            this.actor.owner = owner;
-        });
-        await this.contracts.Actor.at(this.actor.address).then(actor => {
-            return actor.actorType();
-        }).then(actorType => {
-            this.actor.type = actorType.toNumber();
-            this.actor.typeName = ((atype) => {
-                switch (atype) {
-                    case 0: return "Manufacturer";
-                    case 1: return "Dealer";
-                    case 2: return "Service Shop";
-                    case 3: return "Owner";
-                    default: return "";
-                }
-            })(actorType.toNumber());
-        });
+
+        let actor = this.contracts.Actor.at(this.actor.address);
+        this.actor.name = await actor.name();
+        this.actor.database = await actor.database();
+        this.actor.owner = await actor.owner();
+        let atype = await actor.actorType();
+        this.actor.type = atype.toNumber();
+        this.actor.typeName = ((atype) => {
+            switch (atype) {
+                case 0: return "Manufacturer";
+                case 1: return "Dealer";
+                case 2: return "Service Shop";
+                case 3: return "Owner";
+                default: return "";
+            }
+        })(this.actor.type);
         component.setState({
             actor: this.actor
         });
@@ -145,11 +133,8 @@ const ContractLibrary = {
         if (!this.web3) {
             await this.getInstance();
         }
-        await this.contracts.ActorRegistry.at("0x173c290Bbd9f14B8ae8C79cb770bABcd472Be1BD").then(registry => {
-            return registry.getActorAddress("0x9840d046A6D23727baa66882e63C77e51544f233");
-        }).then(address => {
-            this.actor.address = address;
-        });
+        let registry = await this.contracts.ActorRegistry.at("0x173c290Bbd9f14B8ae8C79cb770bABcd472Be1BD");
+        this.actor.address =  await registry.getActorAddress("0x9840d046A6D23727baa66882e63C77e51544f233");
     },
     getSensorData: async function (address, component) {
         if (!this.web3) {
@@ -189,7 +174,8 @@ const ContractLibrary = {
                     });
                 });
                 component.setState({
-                    vehicules: list
+                    vehicules: list,
+                    loading: false
                 });
             });
         })

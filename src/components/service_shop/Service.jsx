@@ -22,13 +22,13 @@ export class DoService extends Component {
 
     componentWillMount() {
         ContractLibrary.getVehicules(this);
-        ContractLibrary.getLatestMaintenance("0x3e4161669Dd2abF0bA33bA63978C44f21ed61Ed7", this);
     }
 
     handleClick = (address) => {
         return function (e) {
             e.preventDefault();
             ContractLibrary.getVehiculeStatus(address, this);
+            ContractLibrary.getLatestMaintenance("0x3e4161669Dd2abF0bA33bA63978C44f21ed61Ed7", this);
         }.bind(this);
     };
 
@@ -66,11 +66,11 @@ export class DoService extends Component {
                                                     (<div>
                                                         <h4>Latest Maintenance</h4>
                                                         <div className="history-grid">
-                                                            <div className="ref">{this.state.historyrerefence}</div>
+                                                            <div className="ref">{this.state.history.timestamp.toLocaleString('en-us', dateFormatOptions)}</div>
                                                             <div className="block">{this.state.history.blockNumber}</div>
                                                             <div className="type">{eventTypes[this.state.history.event]}</div>
                                                             <div className="desc">{this.state.history.description}</div>
-                                                            <div className="day">{this.state.history.timestamp.toLocaleString('en-us', dateFormatOptions)}</div>
+                                                            <div className="day"></div>
                                                         </div>
                                                     </div>)
                                                     : (<h3>No Maintenance Recorded</h3>)

@@ -7,6 +7,7 @@ export class ReceiveVehicule extends Component {
     constructor(props) {
         super(props);
         this.state = {
+            loading: true,
             title: "Receive Vehicule"
         };
     }

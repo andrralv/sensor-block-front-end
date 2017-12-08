@@ -9,6 +9,7 @@ export class History extends Component {
         super(props);
         this.state = {
             history: [],
+            loading: true,
             title: "History"
         };
     }
