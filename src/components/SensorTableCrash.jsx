@@ -7,13 +7,16 @@ export class SensorTableCom extends Component {
   constructor(props) {
     super(props);
     this.state = {
-        sensors: {},
         loading: true
     };
   }
 
-  componentWillMount() {
-    ContractLibrary.getSensorData("0x3e4161669Dd2abF0bA33bA63978C44f21ed61Ed7", this);
+  componentWillReceiveProps() {
+    if (this.props.sensors) {
+      this.setState({
+        loading: false
+      })
+    }
   }
 
   render() {
@@ -25,7 +28,7 @@ export class SensorTableCom extends Component {
     var keys1 = jsonTemplate.sensors.crash
 
     Object.keys(keys1).forEach(key => {
-      keys1[key]=this.state.sensors[key];
+      keys1[key]=this.props.sensors[key];
     });
 
     for (var key in keys1) {

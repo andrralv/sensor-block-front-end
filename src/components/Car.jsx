@@ -2,11 +2,11 @@ import React from 'react'
 import ReactSVG from 'react-svg'
 import sensorColors from './../utils/sensorColors.js'
 
-const Car = () => (
+const Car = (props) => (
     <ReactSVG
     path="./car-v2.svg"
     callback={function(svg) {
-        sensorColors(svg);
+        sensorColors(svg, props);
         }
     }   
     className="car-svg"

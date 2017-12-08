@@ -1,7 +1,7 @@
 
 
-function sensorColors(svg) {
-
+function sensorColors(svg, props) {
+    console.log("en colors:", props)
     // colors for the crash sensors
     let crashes = [];
 
