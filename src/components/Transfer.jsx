@@ -5,6 +5,7 @@ import Navigation from './Navigation'
 import Status from './Status'
 import '../css/transfer.css'
 import '../css/icon.css'
+import '../css/form.css'
 
 export class Transfer extends Component {
 
@@ -52,12 +53,12 @@ export class Transfer extends Component {
                                     </div>
                                     <div className="transfer-box">
                                         {this.state.status.brand &&
-                                            <div id="transfer-form">
+                                            <div id="blue-form">
                                                 <i className="material-icons w3-xxlarge next">arrow_forward</i>
-                                                <div id="inputContainer">
-                                                    <input id="inputField" required autoFocus />
-                                                    <label id="inputLabel">Address</label>
-                                                    <div id="inputProgress"></div>
+                                                <div className="form-container">
+                                                    <input className="input-field" required autoFocus />
+                                                    <label className="input-label">Address</label>
+                                                    <div className="input-subline"></div>
                                                 </div>
                                             </div>
                                         }
