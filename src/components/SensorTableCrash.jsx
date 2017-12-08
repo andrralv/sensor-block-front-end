@@ -37,7 +37,6 @@ export class SensorTableCom extends Component {
     const temp = Object.keys(keys1).map((key, index) => 
       <tr><td className="li-list" key={index}>{cap(key)}</td><td>{keys1[key]}</td></tr>
     );
-    console.log(keys1)
     return (
       this.state.loading ? (<Loader />)
         : (

@@ -1,3 +1,5 @@
+import SensorTableCom from '../components/SensorTableCom'
+
 function sensorColors(svg) {
 
     // colors for the crash sensors
@@ -21,6 +23,7 @@ function sensorColors(svg) {
     crashes.forEach(function(crash) {
         crash.style.fill = "yellow";
     })
+
     let statuses = [];
     // colors for the status sensors
     let status_1 = document.getElementsByTagName("rect")[0];
