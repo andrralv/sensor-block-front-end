@@ -208,3 +208,15 @@ table th {
 .text-smaller {
   font-size: x-small;
 }
+
+.li-title {
+  color: rgb(12, 75, 134);
+  font-family: 'Oswald', 'Arial Narrow', sans-serif;
+}
+
+.li-list {
+  list-style-type: none;
+}
+
+.table-li {padding-right: 15% !important;}
+

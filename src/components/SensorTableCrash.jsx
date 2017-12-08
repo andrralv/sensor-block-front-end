@@ -20,7 +20,7 @@ export class SensorTableCom extends Component {
         return s[0].toUpperCase() + s.slice(1);
     }
     let l = []
-    var keys1 = jsonTemplate.sensors.auto
+    var keys1 = jsonTemplate.sensors.crash
 
     Object.keys(keys1).forEach(key => {
       keys1[key]=this.state.sensors[key];
@@ -29,7 +29,7 @@ export class SensorTableCom extends Component {
     for (var key in keys1) {
       if(keys1.hasOwnProperty(key)){
         if (keys1[key] == undefined) {keys1[key] = 0}
-      }
+        }
     }
 
     const temp = Object.keys(keys1).map((key, index) => 
