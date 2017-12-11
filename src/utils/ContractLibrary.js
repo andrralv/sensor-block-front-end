@@ -204,8 +204,25 @@ const ContractLibrary = {
                 loading: false
             })
         });
+    },
+    applyService: async function (address, comments, component) {
+        if (!this.web3) {
+            await this.getInstance();
+        }
+        let sensor = {
+            mileage: Math.floor((Math.random() * 10000) + 1),
+            fuelTank: Math.floor((Math.random() * 100) + 1),
+            oilMeter: Math.floor((Math.random() * 100) + 1)
+        };
+        let vehicule = await this.contracts.Vehicule.at(address);
+        let result =  await vehicule.addAction(4, "0x45e40c1EE3E4F7eB23e3E18b3774684B68C40A5b",
+        comments, JSON.stringify(sensor), { from: this.web3.eth.accounts[0] });
+        console.log(result);
+        component.setState({
+            currentVehicule : null,
+            comments : null
+        });
     }
-
 }
 
 export default ContractLibrary

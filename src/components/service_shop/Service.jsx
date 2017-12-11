@@ -13,6 +13,8 @@ export class DoService extends Component {
         super(props);
         this.state = {
             vehicules: [],
+            currentVehicule: null,
+            comments : null,
             history: {},
             status: {},
             loading: true,
@@ -25,12 +27,28 @@ export class DoService extends Component {
     }
 
     handleClick = (address) => {
+        this.setState({
+            currentVehicule : address
+        });
         return function (e) {
             e.preventDefault();
             ContractLibrary.getVehiculeStatus(address, this);
-            ContractLibrary.getLatestMaintenance("0x3e4161669Dd2abF0bA33bA63978C44f21ed61Ed7", this);
+            ContractLibrary.getLatestMaintenance(address, this);
         }.bind(this);
     };
+
+    applyService = () => {
+        return function (e) {
+            e.preventDefault();
+            ContractLibrary.applyService(this.state.address, this.state.comments, this);
+        }.bind(this);
+    }
+
+    updateComments(evt){
+        this.setState({
+            comments: evt.target.value
+        }); 
+      }
 
     render() {
         const listItems = this.state.vehicules.map((row, index) => (
@@ -81,7 +99,7 @@ export class DoService extends Component {
                                     <div className="transfer-box">
                                         {this.state.status.brand &&
                                             <div id="blue-form">
-                                                <i className="material-icons w3-xxlarge next">arrow_forward</i>
+                                                <i className="material-icons w3-xxlarge next" onClick={this.applyService()}>arrow_forward</i>
                                                 <div className="form-container">
                                                     <textarea className="input-field" cols="40" rows="5" />
                                                     <label className="input-label">Comments</label>
