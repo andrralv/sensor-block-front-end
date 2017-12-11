@@ -222,6 +222,12 @@ const ContractLibrary = {
             currentVehicule : null,
             comments : null
         });
+    },
+    login : async function(password, component){
+        let result  = await this.web3.personal.unlockAccount(this.web3.eth.accounts[0], password, this.web3.fromDecimal(900));
+        component.setState({
+            loggedIn : result
+        });
     }
 }
 
