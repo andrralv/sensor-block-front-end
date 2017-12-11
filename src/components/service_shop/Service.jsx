@@ -14,7 +14,7 @@ export class DoService extends Component {
         this.state = {
             vehicules: [],
             currentVehicule: null,
-            comments : null,
+            comments: null,
             history: {},
             status: {},
             loading: true,
@@ -27,11 +27,11 @@ export class DoService extends Component {
     }
 
     handleClick = (address) => {
-        this.setState({
-            currentVehicule : address
-        });
         return function (e) {
             e.preventDefault();
+            this.setState({
+                currentVehicule: address
+            });
             ContractLibrary.getVehiculeStatus(address, this);
             ContractLibrary.getLatestMaintenance(address, this);
         }.bind(this);
@@ -44,11 +44,11 @@ export class DoService extends Component {
         }.bind(this);
     }
 
-    updateComments(evt){
+    updateComments(evt) {
         this.setState({
             comments: evt.target.value
-        }); 
-      }
+        });
+    }
 
     render() {
         const listItems = this.state.vehicules.map((row, index) => (
