@@ -232,3 +232,5 @@ tbody {font-size: 0.9em;}
 
 .make-blue {color: rgb(12, 75, 134);
   text-decoration: underline;}
+
+.make-me-red {fill: red;}
