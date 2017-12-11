@@ -25,7 +25,7 @@ export class AccessForm extends Component {
 
     render() {
         return (
-            <div className="container">
+            <div className="access-container">
                 <div className="card"></div>
                 <div className="card">
                     <h1 className="title">Login</h1>

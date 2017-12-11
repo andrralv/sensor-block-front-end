@@ -1,23 +1,23 @@
   /* Container */
 
-  .container {
+  .access-container {
       position: relative;
       max-width: 460px;
       width: 100%;
       margin: 0 auto 100px;
   }
 
-  .container.active .card:first-child {
+  .access-container.active .card:first-child {
       background: #f2f2f2;
       margin: 0 15px;
   }
 
-  .container.active .card:nth-child(2) {
+  .access-container.active .card:nth-child(2) {
       background: #fafafa;
       margin: 0 10px;
   }
 
-  .container.active .card.alt {
+  .access-container.active .card.alt {
       top: 20px;
       right: 0;
       width: 100%;
@@ -28,7 +28,7 @@
       overflow: hidden;
   }
 
-  .container.active .card.alt .toggle {
+  .access-container.active .card.alt .toggle {
       position: absolute;
       top: 40px;
       right: -70px;
@@ -42,11 +42,11 @@
       transition: transform .3s ease, -webkit-transform .3s ease;
   }
 
-  .container.active .card.alt .toggle:before {
+  .access-container.active .card.alt .toggle:before {
       content: '';
   }
 
-  .container.active .card.alt .title, .container.active .card.alt .input-container, .container.active .card.alt .button-container {
+  .access-container.active .card.alt .title, .access-container.active .card.alt .input-container, .access-container.active .card.alt .button-container {
       left: 0;
       opacity: 1;
       visibility: visible;
@@ -54,27 +54,27 @@
       transition: .3s ease;
   }
 
-  .container.active .card.alt .title {
+  .access-container.active .card.alt .title {
       -webkit-transition-delay: .3s;
       transition-delay: .3s;
   }
 
-  .container.active .card.alt .input-container {
+  .access-container.active .card.alt .input-container {
       -webkit-transition-delay: .4s;
       transition-delay: .4s;
   }
 
-  .container.active .card.alt .input-container:nth-child(2) {
+  .access-container.active .card.alt .input-container:nth-child(2) {
       -webkit-transition-delay: .5s;
       transition-delay: .5s;
   }
 
-  .container.active .card.alt .input-container:nth-child(3) {
+  .access-container.active .card.alt .input-container:nth-child(3) {
       -webkit-transition-delay: .6s;
       transition-delay: .6s;
   }
 
-  .container.active .card.alt .button-container {
+  .access-container.active .card.alt .button-container {
       -webkit-transition-delay: .7s;
       transition-delay: .7s;
   }
