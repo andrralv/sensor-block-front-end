@@ -34,9 +34,11 @@ export class SensorTableCom extends Component {
         if (keys1[key] === undefined) {keys1[key] = 0}
         }
     }
+    let enumABC = ["A", "B", "C", "D", "E", "F", "G"];
+    
+    const temp = Object.keys(keys1).map((key, index) =>
 
-    const temp = Object.keys(keys1).map((key, index) => 
-      <tr key={index}><td className="li-list">{cap(key)}</td><td>{keys1[key]}</td></tr>
+      <tr key={index}><td className="li-list">{enumABC[index]}.&nbsp;{cap(key)}</td><td>{keys1[key]}</td></tr>
     );
     return (
       this.state.loading ? (<Loader />)

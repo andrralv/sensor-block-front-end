@@ -36,7 +36,7 @@ componentWillReceiveProps() {
     }
 
     const temp = Object.keys(keys1).map((key, index) => 
-      <tr key={index}><td className="li-list">{cap(key)}</td><td>{keys1[key]}</td></tr>
+      <tr key={index}><td className="li-list">{index+1}.&nbsp;{cap(key)}</td><td>{keys1[key]}</td></tr>
     );
     return (
       this.state.loading ? (<Loader />)
