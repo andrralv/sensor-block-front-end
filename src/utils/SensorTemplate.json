@@ -21,7 +21,9 @@
             "crashRight": 0,
             "crashLeft": 0,
             "crashBackRight": 1,
-            "crashBackLeft": 1
+            "crashBackLeft": 1,
+            "airbagRight": 0,
+            "airbagLeft": 0
           }
       
   }

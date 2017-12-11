@@ -1,6 +1,5 @@
 import React, { Component } from 'react'
 import jsonTemplate from '../utils/SensorTemplate.json'
-import ContractLibrary from '../utils/ContractLibrary'
 import Loader from './Loader'
 
 export class SensorTableCom extends Component {
@@ -24,7 +23,6 @@ export class SensorTableCom extends Component {
     {
         return s[0].toUpperCase() + s.slice(1);
     }
-    let l = []
     var keys1 = jsonTemplate.sensors.crash
 
     Object.keys(keys1).forEach(key => {
@@ -33,12 +31,12 @@ export class SensorTableCom extends Component {
 
     for (var key in keys1) {
       if(keys1.hasOwnProperty(key)){
-        if (keys1[key] == undefined) {keys1[key] = 0}
+        if (keys1[key] === undefined) {keys1[key] = 0}
         }
     }
 
     const temp = Object.keys(keys1).map((key, index) => 
-      <tr><td className="li-list" key={index}>{cap(key)}</td><td>{keys1[key]}</td></tr>
+      <tr key={index}><td className="li-list">{cap(key)}</td><td>{keys1[key]}</td></tr>
     );
     return (
       this.state.loading ? (<Loader />)
@@ -46,9 +44,9 @@ export class SensorTableCom extends Component {
         <div className="table-li">
           <table>
             <thead>
-              <th>Crash Sensors</th>
-              {temp}
+              <tr><th>Performance Sensors</th></tr>
             </thead>
+            <tbody>{temp}</tbody>
           </table>
       </div>
       )

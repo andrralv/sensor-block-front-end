@@ -1,55 +1,75 @@
-
+import jsonTemplate from '../utils/SensorTemplate.json'
 
 function sensorColors(svg, props) {
-    console.log("en colors:", props)
+
+    var keysCrash = jsonTemplate.sensors.crash
+    Object.keys(keysCrash).forEach(key => {
+        keysCrash[key]=props[key];
+      });
+    
+    for (var key in keysCrash) {
+    if(keysCrash.hasOwnProperty(key)){
+        if (keysCrash[key] === undefined) {keysCrash[key] = 0}
+        }
+    }
+
+    console.log("en colors:", keysCrash)
     // colors for the crash sensors
-    let crashes = [];
 
     let crash_a = document.getElementsByTagName("circle")[0];
-    crashes.push(crash_a);
+    if ((keysCrash[0] !== undefined)) {crash_a.style.fill = "yellow"}
     let crash_b = document.getElementsByTagName("circle")[1];
-    crashes.push(crash_b);
+    if ((keysCrash[1] !== undefined)) {crash_b.style.fill = "yellow"}
     let crash_c = document.getElementsByTagName("circle")[2];
-    crashes.push(crash_c);
+    if ((keysCrash[2] !== undefined)) {crash_c.style.fill = "yellow"}
     let crash_d = document.getElementsByTagName("circle")[3];
-    crashes.push(crash_d);
+    if ((keysCrash[3] !== undefined)) {crash_d.style.fill = "yellow"}
     let crash_e = document.getElementsByTagName("circle")[4];
-    crashes.push(crash_e);
+    if ((keysCrash[4] !== undefined)) {crash_e.style.fill = "yellow"}
     let crash_f = document.getElementsByTagName("circle")[5];
-    crashes.push(crash_f);
+    if ((keysCrash[5] !== undefined)) {crash_f.style.fill = "yellow"}
     let crash_g = document.getElementsByTagName("circle")[6];
-    crashes.push(crash_g);
+    if ((keysCrash[6] !== undefined)) {crash_g.style.fill = "yellow"}
 
-    crashes.forEach(function(crash) {
-        crash.style.fill = "yellow";
-    })
 
-    let statuses = [];
+    // --------------------------------------------------------- AUTO
+    var keysAuto = jsonTemplate.sensors.auto
+    Object.keys(keysAuto).forEach(key => {
+        keysAuto[key]=props[key];
+      });
+    
+    for (key in keysAuto) {
+    if(keysAuto.hasOwnProperty(key)){
+        if (keysAuto[key] === undefined) {keysAuto[key] = 0}
+        }
+    }
+    console.log("en colors:", keysAuto)
+
     // colors for the status sensors
     let status_1 = document.getElementsByTagName("rect")[0];
-    statuses.push(status_1);
+    console.log(keysAuto.coolantTemp)
+    if ((keysAuto.co2exhaust) > 0) {status_1.style.fill = "red"}
     let status_2 = document.getElementsByTagName("rect")[1];
-    statuses.push(status_2);
+    if ((keysAuto[1] !== undefined)) {status_2.style.fill = "red"}
     let status_3 = document.getElementsByTagName("rect")[2];
-    statuses.push(status_3);
+    if ((keysAuto[2] !== undefined)) {status_3.style.fill = "red"}
     let status_4 = document.getElementsByTagName("rect")[3];
-    statuses.push(status_4);
+    if ((keysAuto[3] !== undefined)) {status_4.style.fill = "red"}
     let status_5 = document.getElementsByTagName("rect")[4];
-    statuses.push(status_5);
+    if ((keysAuto[4] !== undefined)) {status_5.style.fill = "red"}
     let status_6 = document.getElementsByTagName("rect")[5];
-    statuses.push(status_6);
+    if ((keysAuto[5] !== undefined)) {status_6.style.fill = "red"}
     let status_7 = document.getElementsByTagName("rect")[6];
-    statuses.push(status_7);
+    if ((keysAuto[6] !== undefined)) {status_7.style.fill = "red"}
     let status_8 = document.getElementsByTagName("rect")[7];
-    statuses.push(status_8);
+    if ((keysAuto[7] !== undefined)) {status_8.style.fill = "red"}
     let status_9 = document.getElementsByTagName("rect")[8];
-    statuses.push(status_9);
+    if ((keysAuto[8] !== undefined)) {status_9.style.fill = "red"}
     let status_10 = document.getElementsByTagName("rect")[9];
-    statuses.push(status_10);
+    if ((keysAuto[9] !== undefined)) {status_10.style.fill = "red"}
     let status_11 = document.getElementsByTagName("rect")[10];
-    statuses.push(status_11);
+    if ((keysAuto[10] !== undefined)) {status_11.style.fill = "red"}
     
-    statuses.forEach(function(status) {status.style.fill = "red";})
 }
 
 module.exports = sensorColors;

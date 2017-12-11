@@ -1,6 +1,5 @@
 import React from 'react'
 import Car from './Car'
-import SensorTable from './SensorTable'
 import SensorTableCom from './SensorTableCom'
 import SensorTableCrash from './SensorTableCrash'
 
@@ -11,7 +10,8 @@ const Grid = (props) => (
     
     <div className="grid-wrapper">
         <div className="grid-box a">
-            <Car sensors={props.sensors}/>
+        {/** Condicion para renderizar cuando el props este listo*/}
+        {(props.sensors.co2exhaust === 5) && <Car sensors={props.sensors}/>}
         </div>
         <div className="grid-box b">
             <SensorTableCom sensors={props.sensors}/>
