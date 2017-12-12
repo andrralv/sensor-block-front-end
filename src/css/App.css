@@ -249,3 +249,9 @@ div.go-left-2 {
 .go-right {padding-left: 58px;
           padding-top: 15px;}
 
+.settingsWrapper {padding-top: 6%;}
+
+.settingsWrapper ul li{list-style-type: none;
+  margin: 10px;}
+
+.drawing {padding-left: 40px;}
