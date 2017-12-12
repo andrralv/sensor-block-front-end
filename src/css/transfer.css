@@ -50,6 +50,10 @@
     }
 }
 
+.rectangle-list {
+    counter-reset: li;    
+}
+
 .rectangle-list a {
     position: relative;
     display: block;
