@@ -76,12 +76,12 @@ export class DoService extends Component {
                                     <div className="vehicules-box">
                                         <ol className="rectangle-list">{listItems}</ol>
                                     </div>
-                                    <div className="status-box">
-                                        {!this.state.status.brand ? (<h3>Please Select a Vehicule</h3>)
+                                    <div className="status-box-2">
+                                        {!this.state.status.brand ? (<h3 className='go-right'>Please Select a Vehicule</h3>)
                                             : (
                                                 (this.state.history.rerefence ?
                                                     (<div>
-                                                        <h4>Latest Maintenance</h4>
+                                                        <h4 className='go-right'>Latest Maintenance</h4>
                                                         <div className="history-grid">
                                                             <div className="ref">{this.state.history.timestamp.toLocaleString('en-us', dateFormatOptions)}</div>
                                                             <div className="block">{this.state.history.blockNumber}</div>
@@ -90,7 +90,7 @@ export class DoService extends Component {
                                                             <div className="day"></div>
                                                         </div>
                                                     </div>)
-                                                    : (<h3>No Maintenance Recorded</h3>)
+                                                    : (<h3 className='go-right'>No Maintenance Recorded</h3>)
                                                 )
                                             )
                                         }

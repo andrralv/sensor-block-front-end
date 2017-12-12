@@ -226,7 +226,8 @@ tbody {font-size: 0.9em;}
 
 .go-left {padding-left: 24%;}
 
-.title-left {padding-left: 20%;}
+.title-left {padding-left: 20%;
+  white-space: nowrap;}
 
 .aligner {width: 500px;}
 
@@ -234,3 +235,23 @@ tbody {font-size: 0.9em;}
   text-decoration: underline;}
 
 .make-me-red {fill: red;}
+
+div.go-left-2 {
+  padding-left: 22%}
+
+  .status-box-2 {background-color: rgb(218, 218, 218);
+                width: 60%;
+                margin-left: 20%;
+                padding: 10px;
+                padding-bottom: 30px;
+                margin-top: 17px !important;}
+
+.go-right {padding-left: 58px;
+          padding-top: 15px;}
+
+.settingsWrapper {padding-top: 6%;}
+
+.settingsWrapper ul li{list-style-type: none;
+  margin: 10px;}
+
+.drawing {padding-left: 40px;}
