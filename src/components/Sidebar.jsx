@@ -11,9 +11,9 @@ const Sidebar = (props) => (
             <Link to="/transfer" className="react-bar-item react-button">Transfer Vehicle</Link>
             <Link to="/receive" className="react-bar-item react-button">Receive Vehicule</Link>
             <Link to="/release" className="react-bar-item react-button">Release Vehicule</Link>
+            <Link to="/create" className="react-bar-item react-button">Create Vehicule</Link>
             <Link to="/service" className="react-bar-item react-button">Service</Link>
             <Link to="/settings" className="react-bar-item react-button">Settings</Link>
-            <Link to="/create" className="react-bar-item react-button">Create Vehicule</Link>
             <div className="siderbar-text profile">
                 <div >{props.actor.name}</div>
                 <div >{props.actor.typeName}</div>

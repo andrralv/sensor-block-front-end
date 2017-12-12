@@ -148,22 +148,24 @@ const ContractLibrary = {
             return vehicule.getState();
         }).then(state => {
             this.contracts.Vehicule.at(address).then(vehicule => {
-                vehicule.OnActionEvent({ _event: 5 }, { fromBlock: state[7].toNumber(), toBlock: 'latest' }).get((error, result) => {
+                vehicule.OnActionEvent({ _event: 5 }, { fromBlock: 0, toBlock: 'latest' }).get((error, result) => {
+                    console.log(result);
                     let list = {};
-                    result.forEach(row => {
+                    const row = result[result.length-1]
+                    // result.forEach(row => {
                         var data;
                         if (row.args._data) {
                             data = JSON.parse(row.args._data);
                         }
                         list = data;
-                    });
+                    //});
                     component.setState({
                         sensors: list,
                         loading: false
                     })
                 });
             });
-        });
+        }).catch(error => {console.log(error)});
     },
     getVehicules: async function (component) {
         if (!this.web3) {

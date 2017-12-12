@@ -11,7 +11,7 @@ const Grid = (props) => (
     <div className="grid-wrapper">
         <div className="grid-box a">
         {/** Condicion para renderizar cuando el props este listo*/}
-        {(props.sensors.co2exhaust === 5) && <Car sensors={props.sensors}/>}
+        {(props.sensors.co2exhaust) && <Car sensors={props.sensors}/>}
         </div>
         <div className="grid-box b">
             <SensorTableCom sensors={props.sensors}/>
