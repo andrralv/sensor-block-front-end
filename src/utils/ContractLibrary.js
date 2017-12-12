@@ -4,6 +4,7 @@ import VehiculeABI from '../../build/contracts/Vehicule'
 import DatabaseABI from '../../build/contracts/VehiculeDatabase'
 import ActorABI from '../../build/contracts/Actor'
 import ActorRegistryABI from '../../build/contracts/ActorRegistry'
+import FactoryABI from '../../build/contracts/VehiculeFactory'
 
 const ContractLibrary = {
     web3: null,
@@ -25,10 +26,13 @@ const ContractLibrary = {
         this.contracts.Actor = TruffleContract(ActorABI);
         this.contracts.ActorRegistry = TruffleContract(ActorRegistryABI);
         this.contracts.Database = TruffleContract(DatabaseABI);
+        this.contracts.Factory = TruffleContract(FactoryABI);
+
         this.contracts.Vehicule.setProvider(this.web3.currentProvider);
         this.contracts.Actor.setProvider(this.web3.currentProvider);
         this.contracts.ActorRegistry.setProvider(this.web3.currentProvider);
         this.contracts.Database.setProvider(this.web3.currentProvider);
+        this.contracts.Factory.setProvider(this.web3.currentProvider);
     },
     getBlockNumber: async function () {
         if (!this.web3) {
@@ -133,8 +137,8 @@ const ContractLibrary = {
         if (!this.web3) {
             await this.getInstance();
         }
-        let registry = await this.contracts.ActorRegistry.at("0x173c290Bbd9f14B8ae8C79cb770bABcd472Be1BD");
-        this.actor.address =  await registry.getActorAddress("0x9840d046A6D23727baa66882e63C77e51544f233");
+        let registry = await this.contracts.ActorRegistry.deployed();
+        this.actor.address = await registry.getActorAddress("0x9840d046A6D23727baa66882e63C77e51544f233");
     },
     getSensorData: async function (address, component) {
         if (!this.web3) {
@@ -154,8 +158,8 @@ const ContractLibrary = {
                         list = data;
                     });
                     component.setState({
-                        sensors : list,
-                        loading : false
+                        sensors: list,
+                        loading: false
                     })
                 });
             });
@@ -215,19 +219,36 @@ const ContractLibrary = {
             oilMeter: Math.floor((Math.random() * 100) + 1)
         };
         let vehicule = await this.contracts.Vehicule.at(address);
-        let result =  await vehicule.addAction(4, "0x45e40c1EE3E4F7eB23e3E18b3774684B68C40A5b",
-        comments, JSON.stringify(sensor), { from: this.web3.eth.accounts[0] });
+        let result = await vehicule.addAction(4, "0x45e40c1EE3E4F7eB23e3E18b3774684B68C40A5b",
+            comments, JSON.stringify(sensor), { from: this.web3.eth.accounts[0] });
         console.log(result);
         component.setState({
-            currentVehicule : null,
-            comments : null
+            currentVehicule: null,
+            comments: null
         });
     },
-    login : async function(password, component){
-        let result  = await this.web3.personal.unlockAccount(this.web3.eth.accounts[0], password, this.web3.fromDecimal(900));
+    unlock: async function (password, component) {
+        let result = await this.web3.personal.unlockAccount("0x9840d046A6D23727baa66882e63C77e51544f233", password, this.web3.fromDecimal(900));
+        console.log("unlokc,", result);
         component.setState({
-            loggedIn : result
+            unlocked: result
         });
+    },
+    createVehicule: async function (vehicule) {
+        const engine = {
+            type : vehicule.etype,
+            cc : vehicule.ecc
+        }
+        const extras = {
+            ac : (vehicule.ac === "on") ? true : false,
+            bt : (vehicule.bt === "on") ? true : false
+        }
+        let factory = await this.contracts.Factory.deployed();
+        let result = factory.createVehicule(vehicule.brand, vehicule.model, vehicule.type
+            , JSON.stringify(engine), JSON.stringify(extras),
+            this.web3.fromUtf8(vehicule.vin), vehicule.year,
+            { from: "0x9840d046A6D23727baa66882e63C77e51544f233" });
+        console.log(result);
     }
 }
 

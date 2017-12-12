@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import ContractLibrary from '../utils/ContractLibrary'
+//import ContractLibrary from '../utils/ContractLibrary'
 import '../css/access-form.css'
 import '../css/App.css'
 

@@ -6,6 +6,7 @@ import Transfer from './Transfer'
 import ReleaseVehicule from './service_shop/ReleaseVehicule'
 import ReceiveVehicule from './service_shop/ReceiveVehicule'
 import Service from './service_shop/Service'
+import Create from './Create'
 
 const Main = () => (
   <main>
@@ -16,6 +17,7 @@ const Main = () => (
       <Route path="/receive" component={ReceiveVehicule}/>
       <Route path="/release" component={ReleaseVehicule}/>
       <Route path="/service" component={Service}/>
+      <Route path="/create" component={Create}/>
     </Switch>
   </main>
 )

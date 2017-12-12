@@ -17,7 +17,7 @@ class App extends Component {
     super(props);
     this.state = {
       actor: {},
-      loggedIn: false
+      unlocked: true
     };
   }
 
@@ -30,7 +30,7 @@ class App extends Component {
   }
 
   login = (password) => {
-    ContractLibrary.login(password, this);
+    ContractLibrary.unlock(password, this);
   }
 
   render() {
@@ -39,7 +39,7 @@ class App extends Component {
         {!this.state.actor.name ?
           (<Loader />) : (
             (
-              this.state.loggedIn ?
+              this.state.unlocked ?
                 (<div>
                   <Sidebar actor={this.state.actor} />
                   <Main />
