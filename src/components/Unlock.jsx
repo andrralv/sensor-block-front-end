@@ -8,7 +8,6 @@ export class Unlock extends Component {
     constructor(props) {
         super(props);
         this.state = {
-            password: null,
             unlocked : false
         };
     }

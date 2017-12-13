@@ -11,6 +11,7 @@ const ContractLibrary = {
     contracts: [],
     address: null,
     actor: {},
+    coinbase : null,
     getInstance: async function () {
         if (!this.web3) {
             await getWeb3.then(results => {
@@ -104,13 +105,19 @@ const ContractLibrary = {
         if (!this.actor.address) {
             await this.getCurrentActor();
         }
+        if(!this.actor.address){
+            component.setState({
+                actor: this.actor,
+                loading : false
+            });
+            return;
+        }
         if (this.actor.name) {
             component.setState({
                 actor: this.actor
             });
             return;
         }
-
         let actor = this.contracts.Actor.at(this.actor.address);
         this.actor.name = await actor.name();
         this.actor.database = await actor.database();
@@ -126,8 +133,10 @@ const ContractLibrary = {
                 default: return "";
             }
         })(this.actor.type);
+        console.log("get actor data");
         component.setState({
-            actor: this.actor
+            actor: this.actor,
+            loading : false
         });
     },
     getCurrentActor: async function () {
@@ -138,7 +147,11 @@ const ContractLibrary = {
             await this.getInstance();
         }
         let registry = await this.contracts.ActorRegistry.deployed();
-        this.actor.address = await registry.getActorAddress("0x9840d046A6D23727baa66882e63C77e51544f233");
+        this.actor.address = await registry.getActorAddress(this.coinbase);
+        const a = this.web3.toBigNumber(this.actor.address);
+        if(a == 0){
+            this.actor.address = null;
+        }
     },
     getSensorData: async function (address, component) {
         if (!this.web3) {
@@ -230,13 +243,25 @@ const ContractLibrary = {
         });
     },
     unlock: async function (password, component) {
-        let result = await this.web3.personal.unlockAccount("0x9840d046A6D23727baa66882e63C77e51544f233", password, this.web3.fromDecimal(900));
-        console.log("unlokc,", result);
+        if (!this.web3) {
+            await this.getInstance();
+        }
+        let result = await this.web3.personal.unlockAccount(this.coinbase, password, this.web3.fromDecimal(900));
         component.setState({
             unlocked: result
         });
     },
+    login:  async function (username, password, account, component){
+        if (!this.web3) {
+            await this.getInstance();
+        }
+        this.coinbase = account;
+        this.unlock(password,component);
+    },
     createVehicule: async function (vehicule) {
+        if (!this.web3) {
+            await this.getInstance();
+        }
         const engine = {
             type : vehicule.etype,
             cc : vehicule.ecc
@@ -249,8 +274,19 @@ const ContractLibrary = {
         let result = factory.createVehicule(vehicule.brand, vehicule.model, vehicule.type
             , JSON.stringify(engine), JSON.stringify(extras),
             this.web3.fromUtf8(vehicule.vin), vehicule.year,
-            { from: "0x9840d046A6D23727baa66882e63C77e51544f233" });
+            { from: this.coinbase });
         console.log(result);
+    },
+    getAccounts: async function (component) {
+        if (!this.web3) {
+            await this.getInstance();
+        }
+        component.setState({
+            accounts : this.web3.personal.listAccounts
+        });
+    },
+    register : async function (name, account, type, component) {
+        
     }
 }
 

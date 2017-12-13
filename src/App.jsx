@@ -4,6 +4,7 @@ import Main from './components/Main'
 import Loader from './components/Loader'
 import ContractLibrary from './utils/ContractLibrary'
 import AccessForm from './components/AccessForm'
+import { Register } from './components/Register';
 
 import './css/oswald.css'
 import './css/open-sans.css'
@@ -11,13 +12,15 @@ import './css/pure-min.css'
 import './css/App.css'
 import './css/loader.css'
 
+
 class App extends Component {
 
   constructor(props) {
     super(props);
     this.state = {
       actor: {},
-      unlocked: true
+      loggedIn: false,
+      loading: false
     };
   }
 
@@ -25,27 +28,43 @@ class App extends Component {
     marginLeft: '25%'
   };
 
-  componentWillMount() {
-    ContractLibrary.getActorData(this);
+  componentWillUpdate(nextProps, nextState) {
+    if (nextState.loggedIn) {
+      if(nextState.loading){
+        ContractLibrary.getActorData(this);
+      }
+    }
   }
 
-  login = (password) => {
-    ContractLibrary.unlock(password, this);
+  login = (result) => {
+    this.setState({
+      loggedIn: result,
+      loading: true
+    });
+  }
+
+  register = (result) => {
+    
   }
 
   render() {
     return (
       <div>
-        {!this.state.actor.name ?
-          (<Loader />) : (
-            (
-              this.state.unlocked ?
-                (<div>
-                  <Sidebar actor={this.state.actor} />
-                  <Main />
-                </div>)
-                : (<AccessForm login={this.login} />)
-            )
+        {!this.state.loggedIn ?
+          (<AccessForm login={this.login} />)
+          : (
+            this.state.loading ?
+              (<Loader />)
+              : (
+                !this.state.actor.address ?
+                  (<Register />)
+                  : (
+                    <div>
+                      <Sidebar actor={this.state.actor} />
+                      <Main />
+                    </div>
+                  )
+              )
           )
         }
       </div>
