@@ -255,3 +255,11 @@ div.go-left-2 {
   margin: 10px;}
 
 .drawing {padding-left: 40px;}
+
+.history-button {font-size: 0.7em;
+    width: 110%;}
+
+.history-table {white-space: nowrap;}
+
+.history-table div {display: inline-block;
+padding: 20px;}
