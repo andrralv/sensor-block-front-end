@@ -11,7 +11,7 @@ const ContractLibrary = {
     contracts: [],
     address: null,
     actor: {},
-    coinbase : null,
+    coinbase: null,
     getInstance: async function () {
         if (!this.web3) {
             await getWeb3.then(results => {
@@ -105,10 +105,10 @@ const ContractLibrary = {
         if (!this.actor.address) {
             await this.getCurrentActor();
         }
-        if(!this.actor.address){
+        if (!this.actor.address) {
             component.setState({
                 actor: this.actor,
-                loading : false
+                loading: false
             });
             return;
         }
@@ -136,7 +136,7 @@ const ContractLibrary = {
         console.log("get actor data");
         component.setState({
             actor: this.actor,
-            loading : false
+            loading: false
         });
     },
     getCurrentActor: async function () {
@@ -149,7 +149,7 @@ const ContractLibrary = {
         let registry = await this.contracts.ActorRegistry.deployed();
         this.actor.address = await registry.getActorAddress(this.coinbase);
         const a = this.web3.toBigNumber(this.actor.address);
-        if(a == 0){
+        if (a == 0) {
             this.actor.address = null;
         }
     },
@@ -164,13 +164,13 @@ const ContractLibrary = {
                 vehicule.OnActionEvent({ _event: 5 }, { fromBlock: 0, toBlock: 'latest' }).get((error, result) => {
                     console.log(result);
                     let list = {};
-                    const row = result[result.length-1]
+                    const row = result[result.length - 1]
                     // result.forEach(row => {
-                        var data;
-                        if (row.args._data) {
-                            data = JSON.parse(row.args._data);
-                        }
-                        list = data;
+                    var data;
+                    if (row.args._data) {
+                        data = JSON.parse(row.args._data);
+                    }
+                    list = data;
                     //});
                     component.setState({
                         sensors: list,
@@ -178,7 +178,7 @@ const ContractLibrary = {
                     })
                 });
             });
-        }).catch(error => {console.log(error)});
+        }).catch(error => { console.log(error) });
     },
     getVehicules: async function (component) {
         if (!this.web3) {
@@ -251,24 +251,24 @@ const ContractLibrary = {
             unlocked: result
         });
     },
-    login:  async function (username, password, account, component){
+    login: async function (username, password, account, component) {
         if (!this.web3) {
             await this.getInstance();
         }
         this.coinbase = account;
-        this.unlock(password,component);
+        this.unlock(password, component);
     },
     createVehicule: async function (vehicule) {
         if (!this.web3) {
             await this.getInstance();
         }
         const engine = {
-            type : vehicule.etype,
-            cc : vehicule.ecc
+            type: vehicule.etype,
+            cc: vehicule.ecc
         }
         const extras = {
-            ac : (vehicule.ac === "on") ? true : false,
-            bt : (vehicule.bt === "on") ? true : false
+            ac: (vehicule.ac === "on") ? true : false,
+            bt: (vehicule.bt === "on") ? true : false
         }
         let factory = await this.contracts.Factory.deployed();
         let result = factory.createVehicule(vehicule.brand, vehicule.model, vehicule.type
@@ -282,17 +282,17 @@ const ContractLibrary = {
             await this.getInstance();
         }
         component.setState({
-            accounts : this.web3.personal.listAccounts
+            accounts: this.web3.personal.listAccounts
         });
     },
-    register : async function (name, account, type, component) {
+    register: async function (name, account, type, component) {
         if (!this.web3) {
             await this.getInstance();
         }
         let registry = await this.contracts.ActorRegistry.deployed();
-        let result = await registry.register(type,name);
+        let result = await registry.register(type, name, { from: account });
         component.setState({
-            registered : true
+            registered: true
         });
         console.log(result);
     }
