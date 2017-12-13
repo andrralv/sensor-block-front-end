@@ -46,7 +46,7 @@ export class SensorTableCom extends Component {
         <div className="table-li">
           <table>
             <thead>
-              <tr><th>Performance Sensors</th></tr>
+              <tr><th>Crash Sensors</th></tr>
             </thead>
             <tbody>{temp}</tbody>
           </table>

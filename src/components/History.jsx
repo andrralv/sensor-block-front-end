@@ -3,6 +3,7 @@ import ContractLibrary from '../utils/ContractLibrary'
 import Loader from './Loader'
 import Navigation from './Navigation'
 import '../css/history.css'
+import Mod from './Modal'
 
 export class History extends Component {
     constructor(props) {
@@ -49,6 +50,7 @@ export class History extends Component {
                                                 <div className="type">{eventTypes[row.event]}</div>
                                                 <div className="desc">{row.description}</div>
                                                 <div className="day">{row.timestamp.toLocaleString('en-us', dateFormatOptions)}</div>
+                                                <Mod address={row.rerefence}/>
                                             </div>
                                         </li>
                                     ))
@@ -70,7 +72,7 @@ export class History extends Component {
                                 <div className="item">
                                     <div id="timeline">
                                         <div>
-                                            {listItems}
+                                            {listItems} 
                                         </div>
                                     </div>
                                 </div>
