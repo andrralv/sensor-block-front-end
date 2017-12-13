@@ -286,7 +286,15 @@ const ContractLibrary = {
         });
     },
     register : async function (name, account, type, component) {
-        
+        if (!this.web3) {
+            await this.getInstance();
+        }
+        let registry = await this.contracts.ActorRegistry.deployed();
+        let result = await registry.register(type,name);
+        component.setState({
+            registered : true
+        });
+        console.log(result);
     }
 }
 
