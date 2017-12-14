@@ -10,14 +10,21 @@ export class History extends Component {
         super(props);
         this.state = {
             history: [],
-            loading: true,
+            vehicules: [],
+            loading: false,
             title: "History"
         };
     }
 
     componentWillMount() {
-        ContractLibrary.getInstance();
-        ContractLibrary.getVehiculeHistory("0x3e4161669Dd2abF0bA33bA63978C44f21ed61Ed7", this);
+        ContractLibrary.getVehicules(this);
+    }
+
+    handleVehiculeChange = (e) => {
+        this.setState({
+            loading : true
+        });
+        ContractLibrary.getVehiculeHistory(e.target.value, this);
     }
 
     render() {
@@ -50,7 +57,7 @@ export class History extends Component {
                                                 <div className="type">{eventTypes[row.event]}</div>
                                                 <div className="desc">{row.description}</div>
                                                 <div className="day">{row.timestamp.toLocaleString('en-us', dateFormatOptions)}</div>
-                                                <Mod address={row.rerefence}/>
+                                                <Mod address={row.rerefence} />
                                             </div>
                                         </li>
                                     ))
@@ -61,18 +68,24 @@ export class History extends Component {
                 }
             </section>
         );
+        const vehicules = this.state.vehicules.map((vehicule, index) => {
+            return <option key={index} value={vehicule.address} label={vehicule.vin}>{vehicule.vin}</option>;
+        });
         return (
             <div className="App">
                 <Navigation title={this.state.title} />
                 <div className="margin-left">
                     <div className="container">
+                        <select id="vehicule" onChange={this.handleVehiculeChange}>
+                            {vehicules}
+                        </select>
                         <div className="glow"></div>
-                        {this.state.history.length === 0 ? (<Loader />)
-                            : (
+                        {this.state.loading ? (<Loader />)
+                            : (this.state.vehicules.length > 0 &&
                                 <div className="item">
                                     <div id="timeline">
                                         <div>
-                                            {listItems} 
+                                            {listItems}
                                         </div>
                                     </div>
                                 </div>

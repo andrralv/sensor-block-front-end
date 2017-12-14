@@ -93,7 +93,8 @@ const ContractLibrary = {
                     });
                 });
                 component.setState({
-                    history: list
+                    history: list,
+                    loading : false
                 });
             });
         });
