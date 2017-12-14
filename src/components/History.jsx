@@ -71,6 +71,7 @@ export class History extends Component {
         const vehicules = this.state.vehicules.map((vehicule, index) => {
             return <option key={index} value={vehicule.address} label={vehicule.vin}>{vehicule.vin}</option>;
         });
+        const drawHistory = Object.keys(this.state.history).length > 0;
         return (
             <div className="App">
                 <Navigation title={this.state.title} />
@@ -81,7 +82,7 @@ export class History extends Component {
                         </select>
                         <div className="glow"></div>
                         {this.state.loading ? (<Loader />)
-                            : (this.state.history.length > 0 &&
+                            : (drawHistory &&
                                 <div className="item">
                                     <div id="timeline">
                                         <div>
