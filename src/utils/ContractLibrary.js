@@ -76,6 +76,9 @@ const ContractLibrary = {
                     if (row.args._data) {
                         data = JSON.parse(row.args._data);
                     }
+                    if(!data){
+                        data = {};
+                    }
                     var date = new Date(row.args._timestamp.c[0] * 1000);
                     if (!list[date.getFullYear()]) {
                         list[date.getFullYear()] = {};

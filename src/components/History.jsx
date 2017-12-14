@@ -22,7 +22,7 @@ export class History extends Component {
 
     handleVehiculeChange = (e) => {
         this.setState({
-            loading : true
+            loading: true
         });
         ContractLibrary.getVehiculeHistory(e.target.value, this);
     }
@@ -57,7 +57,10 @@ export class History extends Component {
                                                 <div className="type">{eventTypes[row.event]}</div>
                                                 <div className="desc">{row.description}</div>
                                                 <div className="day">{row.timestamp.toLocaleString('en-us', dateFormatOptions)}</div>
-                                                <Mod address={row.rerefence} />
+                                                {Object.keys(row.data).length > 0 &&
+                                                    <Mod data={row.data} />
+                                                }
+
                                             </div>
                                         </li>
                                     ))
