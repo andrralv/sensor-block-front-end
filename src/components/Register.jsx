@@ -19,11 +19,12 @@ export class Register extends Component {
     handleSubmit = (e) => {
         e.preventDefault();
         const form = new FormData(e.target);
+        ContractLibrary.register(form.get("name"),form.get("type"),form.get("account"), this);
     };
 
     render() {
         const options = this.state.accounts.map((account, index) => {
-            return <option key={index} value={index} label={account}>{account}</option>;
+            return <option key={index} value={account} label={account}>{account}</option>;
         });
         return (
             <div className="access-container active">
@@ -50,7 +51,7 @@ export class Register extends Component {
                             <label className="select-label" htmlFor="r-a">Account</label>
                         </div>
                         <div className="input-container">
-                            <select name="account" id="r-t">
+                            <select name="type" id="r-t">
                                 <option value="0">Manufacturer</option>
                                 <option value="1">Dealer</option>
                                 <option value="2">ServiceShop</option>

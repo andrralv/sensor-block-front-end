@@ -285,12 +285,12 @@ const ContractLibrary = {
             accounts: this.web3.personal.listAccounts
         });
     },
-    register: async function (name, account, type, component) {
+    register: async function (name, type, account, component) {
         if (!this.web3) {
             await this.getInstance();
         }
         let registry = await this.contracts.ActorRegistry.deployed();
-        let result = await registry.register(type, name, { from: account });
+        let result = await registry.registerActor(type, name, { from: account });
         component.setState({
             registered: true
         });
