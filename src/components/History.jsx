@@ -81,7 +81,7 @@ export class History extends Component {
                         </select>
                         <div className="glow"></div>
                         {this.state.loading ? (<Loader />)
-                            : (this.state.vehicules.length > 0 &&
+                            : (this.state.history.length > 0 &&
                                 <div className="item">
                                     <div id="timeline">
                                         <div>
