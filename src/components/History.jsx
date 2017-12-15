@@ -24,7 +24,9 @@ export class History extends Component {
         this.setState({
             loading: true
         });
-        ContractLibrary.getVehiculeHistory(e.target.value, this);
+        if (e.target.value !== "0") {
+            ContractLibrary.getVehiculeHistory(e.target.value, this);
+        }
     }
 
     render() {
@@ -81,6 +83,7 @@ export class History extends Component {
                 <div className="margin-left">
                     <div className="container">
                         <select id="vehicule" onChange={this.handleVehiculeChange}>
+                            <option value="0">Chose One</option>
                             {vehicules}
                         </select>
                         <div className="glow"></div>
