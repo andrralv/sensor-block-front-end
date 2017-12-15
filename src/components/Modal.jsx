@@ -28,7 +28,6 @@ export default class Mod extends React.Component {
  
   render() {
     const { open } = this.state;
-    console.log("inside modal", this.state.sensors)
     return (
       <div>
         <button onClick={this.onOpenModal} className="history-button">View Sensor Data</button>
