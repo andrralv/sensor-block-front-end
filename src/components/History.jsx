@@ -83,7 +83,7 @@ export class History extends Component {
                 <div className="margin-left">
                     <div className="container">
                         <select id="vehicule" onChange={this.handleVehiculeChange}>
-                            <option value="0">Chose One</option>
+                            <option value="0">Choose a Vehicle</option>
                             {vehicules}
                         </select>
                         <div className="glow"></div>
