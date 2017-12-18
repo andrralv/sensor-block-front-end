@@ -294,7 +294,10 @@ const ContractLibrary = {
             await this.getInstance();
         }
         let registry = await this.contracts.ActorRegistry.deployed();
-        let result = await registry.registerActor(type, name, this.web3.fromUtf8(username), { from: account });
+        console.log(account);
+        let gas = await registry.registerActor.estimateGas(type, name, this.web3.fromUtf8(username), { from: account });
+        gas = gas + 3000000;
+        let result = await registry.registerActor(type, name, this.web3.fromUtf8(username), { from: account, gas: gas });
         component.setState({
             registered: true
         });

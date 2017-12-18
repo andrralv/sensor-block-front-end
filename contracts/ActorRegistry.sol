@@ -12,7 +12,7 @@ contract ActorRegistry {
 
     mapping (address => Actor) actors;
     mapping (address => address) actorsRefs;
-    mapping (address => bytes16) usernames;
+    mapping (address => bytes32) usernames;
     mapping (address => bool) registered;
 
     modifier newCommer() {
@@ -25,7 +25,7 @@ contract ActorRegistry {
         _;
     }
 
-    function registerActor(Actor.ActorType _type, string _name, bytes16 _username) public newCommer {
+    function registerActor(Actor.ActorType _type, string _name, bytes32 _username) public newCommer {
         actors[msg.sender] = new Actor(this, msg.sender, _name, _type);
         actorsRefs[msg.sender] = actors[msg.sender];
         usernames[msg.sender] = _username;
@@ -41,7 +41,7 @@ contract ActorRegistry {
         return actorsRefs[_actor];
     }
 
-    function validateUsername(bytes16 _username) public onlyRegistered returns (bool) {
+    function validateUsername(bytes32 _username) public onlyRegistered returns (bool) {
         return usernames[msg.sender] == _username;
     }
     

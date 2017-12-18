@@ -1,7 +1,6 @@
 pragma solidity ^0.4.18;
 
 import "./Ownable.sol";
-import "./ActorRegistry.sol";
 
 contract VehiculeDatabase is Ownable {
 
