@@ -4,7 +4,7 @@ module.exports = {
       network_id: "*",
       host: "127.0.0.1",
       port: 8545,
-      gas: 500000,
+      gas: 4700000,
       gasPrice: 1000 // Specified in Wei
     }
   }
