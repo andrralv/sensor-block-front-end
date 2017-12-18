@@ -19,7 +19,7 @@ export class Register extends Component {
     handleSubmit = (e) => {
         e.preventDefault();
         const form = new FormData(e.target);
-        ContractLibrary.register(form.get("name"),form.get("type"),form.get("account"), this);
+        ContractLibrary.register(form.get("name"), form.get("type"), form.get("username"), form.get("account"), this);
     };
 
     render() {
@@ -34,6 +34,11 @@ export class Register extends Component {
                     <div className="toggle"></div>
                     <h1 className="title">Register</h1>
                     <form onSubmit={this.handleSubmit}>
+                        <div className="input-container">
+                            <input id="r-un" name="username" required />
+                            <label htmlFor="r-un">Username</label>
+                            <div className="bar"></div>
+                        </div>
                         <div className="input-container">
                             <input id="r-n" name="name" required />
                             <label htmlFor="r-n">Name</label>
