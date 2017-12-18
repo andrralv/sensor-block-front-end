@@ -77,7 +77,7 @@ export class DoService extends Component {
                                         <ol className="rectangle-list">{listItems}</ol>
                                     </div>
                                     <div className="status-box-2">
-                                        {!this.state.status.brand ? (<h3 className='go-right'>Please Select a Vehicule</h3>)
+                                        {!this.state.status.brand ? (<h3 className='go-right'>Please Select a Vehicle</h3>)
                                             : (
                                                 (this.state.history.rerefence ?
                                                     (<div>
