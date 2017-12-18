@@ -9,7 +9,8 @@ export class AccessForm extends Component {
         super(props);
         this.state = {
             accounts: [],
-            unlocked: false
+            unlocked: false,
+            loggedIn: false
         };
     }
 

@@ -41,7 +41,7 @@ contract ActorRegistry {
         return actorsRefs[_actor];
     }
 
-    function validateUsername(bytes32 _username) public onlyRegistered returns (bool) {
+    function validateUsername(bytes32 _username) public view onlyRegistered returns (bool) {
         return usernames[msg.sender] == _username;
     }
     

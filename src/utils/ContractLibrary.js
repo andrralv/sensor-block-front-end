@@ -76,7 +76,7 @@ const ContractLibrary = {
                     if (row.args._data) {
                         data = JSON.parse(row.args._data);
                     }
-                    if(!data){
+                    if (!data) {
                         data = {};
                     }
                     var date = new Date(row.args._timestamp.c[0] * 1000);
@@ -97,7 +97,7 @@ const ContractLibrary = {
                 });
                 component.setState({
                     history: list,
-                    loading : false
+                    loading: false
                 });
             });
         });
@@ -260,6 +260,9 @@ const ContractLibrary = {
             await this.getInstance();
         }
         this.coinbase = account;
+        //let registry = await this.contracts.ActorRegistry.deployed();
+        //let result = await registry.validateUsername(username, this.web3.fromUtf8(username), { from: account });
+        //console.log("valid username:", result);
         this.unlock(password, component);
     },
     createVehicule: async function (vehicule) {
@@ -275,10 +278,16 @@ const ContractLibrary = {
             bt: (vehicule.bt === "on") ? true : false
         }
         let factory = await this.contracts.Factory.deployed();
-        let result = factory.createVehicule(vehicule.brand, vehicule.model, vehicule.type
+        let gas = await factory.createVehicule.estimateGas(vehicule.brand, vehicule.model, vehicule.type
             , JSON.stringify(engine), JSON.stringify(extras),
             this.web3.fromUtf8(vehicule.vin), vehicule.year,
             { from: this.coinbase });
+            console.log(gas);
+        gas = gas + 3000000;
+        let result = await factory.createVehicule(vehicule.brand, vehicule.model, vehicule.type
+            , JSON.stringify(engine), JSON.stringify(extras),
+            this.web3.fromUtf8(vehicule.vin), vehicule.year,
+            { from: this.coinbase, gas: gas });
         console.log(result);
     },
     getAccounts: async function (component) {
@@ -294,14 +303,13 @@ const ContractLibrary = {
             await this.getInstance();
         }
         let registry = await this.contracts.ActorRegistry.deployed();
-        console.log(account);
         let gas = await registry.registerActor.estimateGas(type, name, this.web3.fromUtf8(username), { from: account });
         gas = gas + 3000000;
         let result = await registry.registerActor(type, name, this.web3.fromUtf8(username), { from: account, gas: gas });
         component.setState({
             registered: true
         });
-        console.log(result);
+        console.log("registry", result);
     }
 }
 
