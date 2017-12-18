@@ -48,7 +48,7 @@ export class Transfer extends Component {
                                         <ol className="rectangle-list">{listItems}</ol>
                                     </div>
                                     <div className="status-box-2">
-                                        {!this.state.status.brand ? (<h3 className='go-right'>Please Select a Vehicule</h3>)
+                                        {!this.state.status.brand ? (<h3 className='go-right'>Please Select a Vehicle</h3>)
                                             : (<Status status={this.state.status}/>)
                                         }
                                     </div>
