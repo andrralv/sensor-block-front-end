@@ -82,7 +82,7 @@ export class History extends Component {
                 <Navigation title={this.state.title} />
                 <div className="margin-left">
                     <div className="container">
-                        <select id="vehicule" onChange={this.handleVehiculeChange}  enabled={this.state.vehicules.length > 0}>
+                        <select id="hvehicules" onChange={this.handleVehiculeChange}  disabled={!this.state.vehicules.length > 0}>
                             <option value="0">Choose a Vehicle</option>
                             {vehicules}
                         </select>

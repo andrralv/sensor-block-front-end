@@ -42,7 +42,7 @@ export class Grid extends Component {
 
         return (
             <div>
-                <select id="vehicule" onChange={this.handleVehiculeChange} enabled={this.state.vehicules.length > 0}>
+                <select id="vehicules" onChange={this.handleVehiculeChange} disabled={!this.state.vehicules.length > 0}>
                     <option value="0">Choose a Vehicle</option>
                     {vehicules}
                 </select>
