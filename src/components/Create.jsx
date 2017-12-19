@@ -27,12 +27,8 @@ export class Create extends Component {
     }
 
     unlocked = () => {
-        console.log("unlock");
-        ContractLibrary.createVehicule(this.state.vehicule);
-        this.setState({
-            vehicule: {},
-            unlock: false
-        });
+        console.log(this.state.vehicule);
+        ContractLibrary.createVehicule(this.state.vehicule, this);
     }
 
     render() {

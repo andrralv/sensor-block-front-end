@@ -1,21 +1,9 @@
 import React, { Component } from 'react'
 import jsonTemplate from '../utils/SensorTemplate.json'
-import Loader from './Loader'
 
 export class SensorTableCom extends Component {
   constructor(props) {
     super(props);
-    this.state = {
-        loading: true
-    };
-  }
-
-componentWillReceiveProps() {
-    if (this.props.sensors) {
-      this.setState({
-        loading: false
-      })
-    }
   }
 
   render() {
@@ -39,8 +27,6 @@ componentWillReceiveProps() {
       <tr key={index}><td className="li-list">{index+1}.&nbsp;{cap(key)}</td><td>{keys1[key]}</td></tr>
     );
     return (
-      this.state.loading ? (<Loader />)
-        : (
         <div className="table-li-larger">
           <table>
             <thead>
@@ -49,7 +35,6 @@ componentWillReceiveProps() {
             <tbody>{temp}</tbody>
           </table>
       </div>
-      )
     )
   }
 }
