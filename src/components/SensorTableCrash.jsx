@@ -2,9 +2,6 @@ import React, { Component } from 'react'
 import jsonTemplate from '../utils/SensorTemplate.json'
 
 export class SensorTableCom extends Component {
-  constructor(props) {
-    super(props);
-  }
 
   render() {
     let cap = function capitalize(s) {

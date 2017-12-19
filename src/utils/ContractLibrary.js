@@ -18,7 +18,7 @@ const ContractLibrary = {
                 this.web3 = results.web3;
                 this.initContracts();
             }).catch((error) => {
-                console.log(error)
+                //console.log(error)
             });
         }
     },
@@ -137,7 +137,7 @@ const ContractLibrary = {
                 default: return "";
             }
         })(this.actor.type);
-        console.log("get actor data");
+        //console.log("get actor data");
         component.setState({
             actor: this.actor,
             loading: false
@@ -183,7 +183,9 @@ const ContractLibrary = {
                     }
                 });
             });
-        }).catch(error => { console.log(error) });
+        }).catch(error => { 
+            //console.log(error) 
+        });
     },
     getVehicules: async function (component) {
         if (!this.web3) {
@@ -241,7 +243,7 @@ const ContractLibrary = {
         let vehicule = await this.contracts.Vehicule.at(address);
         let result = await vehicule.addAction(4, "0x45e40c1EE3E4F7eB23e3E18b3774684B68C40A5b",
             comments, JSON.stringify(sensor), { from: this.web3.eth.accounts[0] });
-        console.log(result);
+        //console.log(result);
         component.setState({
             currentVehicule: null,
             comments: null
@@ -263,7 +265,7 @@ const ContractLibrary = {
         this.coinbase = account;
         //let registry = await this.contracts.ActorRegistry.deployed();
         //let result = await registry.validateUsername(username, this.web3.fromUtf8(username), { from: account });
-        //console.log("valid username:", result);
+        ////console.log("valid username:", result);
         this.unlock(password, component);
     },
     createVehicule: async function (vehicule, component) {
@@ -283,13 +285,13 @@ const ContractLibrary = {
             , JSON.stringify(engine), JSON.stringify(extras),
             this.web3.fromUtf8(vehicule.vin), vehicule.year,
             { from: this.coinbase });
-        console.log(JSON.stringify(engine));
+        //console.log(JSON.stringify(engine));
         gas = gas + 3000000;
         let result = await factory.createVehicule(vehicule.brand, vehicule.model, vehicule.type
             , JSON.stringify(engine), JSON.stringify(extras),
             this.web3.fromUtf8(vehicule.vin), vehicule.year,
             { from: this.coinbase, gas: gas });
-        console.log(result);
+        //console.log(result);
         component.setState({
             vehicule: {},
             unlock: false
@@ -314,7 +316,7 @@ const ContractLibrary = {
         component.setState({
             registered: true
         });
-        console.log("registry", result);
+        //console.log("registry", result);
     }
 }
 

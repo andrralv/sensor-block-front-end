@@ -7,7 +7,7 @@ const Sidebar = (props) => (
         <div className="spacer"></div>
         <Link to="/" className="react-bar-item react-button">Vehicle Info</Link>
         <Link to="/history" className="react-bar-item react-button">History</Link>
-        {props.actor.type !== 0 &&
+        {(props.actor.type !== 0 & props.actor.type !== 2) &&
             <Link to="/notifications" className="react-bar-item react-button">Notifications</Link>
         }
         {props.actor.type !== 2 &&

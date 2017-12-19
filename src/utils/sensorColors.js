@@ -37,7 +37,7 @@ async function sensorColors(svg, props) {
     if ((keysCrash.airbagLeft) >= props.sensors.airbagLeft) {crash_g.style.fill = "yellow"}
 
     
-    console.log("choque", props.sensors.crashFront);
+    //console.log("choque", props.sensors.crashFront);
 
     // --------------------------------------------------------- AUTO
     var keysAuto = jsonTemplate.sensors.auto
@@ -73,7 +73,7 @@ async function sensorColors(svg, props) {
     let status_4 = document.getElementsByTagName("rect")[3];
     if ((keysAuto.batteryCheck) >= props.sensors.batteryCheck) {status_4.style.fill = "red"}
     let status_5 = document.getElementsByTagName("rect")[4];
-    if ((keysAuto.fuelInjection) >= props.sensors.fuelInjection) {status_1.style.fill = "red"}
+    if ((keysAuto.fuelInjection) >= props.sensors.fuelInjection) {status_5.style.fill = "red"}
     let status_6 = document.getElementsByTagName("rect")[5];
     if ((keysAuto.coolantTemp) >= props.sensors.coolantTemp) {status_6.style.fill = "red"}
     let status_7 = document.getElementsByTagName("rect")[6];

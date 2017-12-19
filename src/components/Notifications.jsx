@@ -1,7 +1,5 @@
 import React, { Component } from 'react'
-import Loader from './Loader'
 import Navigation from './Navigation'
-
 
 export class Notifications extends Component {
     constructor(props) {
