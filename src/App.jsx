@@ -59,7 +59,7 @@ class App extends Component {
             this.state.loading ?
               (<Loader />)
               : (
-                this.registered ?
+                !this.state.actor.address ?
                   (<Register callback={this.registered} />)
                   : (
                     <div>
