@@ -313,10 +313,8 @@ const ContractLibrary = {
         let gas = await registry.registerActor.estimateGas(type, name, this.web3.fromUtf8(username), { from: account });
         gas = gas + 3000000;
         let result = await registry.registerActor(type, name, this.web3.fromUtf8(username), { from: account, gas: gas });
-        component.setState({
-            registered: true
-        });
-        //console.log("registry", result);
+        //component.state.callback(true);
+        console.log("registry", result);
     }
 }
 

@@ -20,7 +20,8 @@ class App extends Component {
     this.state = {
       actor: {},
       loggedIn: false,
-      loading: false
+      loading: false,
+      registered : false
     };
   }
 
@@ -43,8 +44,10 @@ class App extends Component {
     });
   }
 
-  register = (result) => {
-    
+  registered = (result) => {
+    this.setState({
+      registered : result
+    });
   }
 
   render() {
@@ -56,8 +59,8 @@ class App extends Component {
             this.state.loading ?
               (<Loader />)
               : (
-                !this.state.actor.address ?
-                  (<Register />)
+                this.registered ?
+                  (<Register callback={this.registered} />)
                   : (
                     <div>
                       <Sidebar actor={this.state.actor} />
