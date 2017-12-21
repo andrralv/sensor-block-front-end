@@ -65,12 +65,12 @@ export class Create extends Component {
                                         <div className="form-container">
                                             <table>
                                                 <tbody>
-                                                    <tr><td>Aditional Information</td></tr>
+                                                    <tr><td>Additional Information</td></tr>
                                                     <tr>
                                                         <td><label htmlFor="vtype">Type</label></td>
                                                         <td>
                                                             <select id="vtype" name="type" >
-                                                                <option value="Sedan">Sendan</option>
+                                                                <option value="Sedan">Sedan</option>
                                                                 <option value="Hatchback">Hatchback</option>
                                                                 <option value="4x2">4x2</option>
                                                                 <option value="4x4">4x4</option>
