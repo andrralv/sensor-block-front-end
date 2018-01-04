@@ -63,7 +63,7 @@ const Status = (props) => (
                                 Engine:
             </td>
                             <td>
-                                {props.status.engine}
+                                {props.status.engine.replace(/"/g, "").replace(/\[/g, "").replace(/]/g, "").replace(/,/g, ", ").replace(/:/g, ": ")}
                             </td>
                         </tr>
 
@@ -72,7 +72,7 @@ const Status = (props) => (
                                 Extras:
             </td>
                             <td>
-                                {props.status.extras}
+                                {props.status.extras.replace(/"/g, "").replace(/\[/g, "").replace(/]/g, "").replace(/,/g, ", ").replace(/:/g, ": ")}
                             </td>
                         </tr>
                     </tbody>
